@@ -1,0 +1,52 @@
+.custom-button {
+    margin-bottom: 3em;
+    background-color: rgb(41, 39, 37);
+    color: #ffffff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: 400;
+    transition: all 0.3s ease;
+}
+
+.custom-button:hover {
+    background-color: rgb(41, 39, 37);
+    cursor: pointer;
+}
+
+.custom-button.clicked {
+    background-color: rgb(41, 39, 37);
+    transform: translateY(2px);
+}
+
+.daterangepicker .applyBtn {
+    background-color: rgb(41, 39, 37);
+    border-color: transparent;
+    --bs-btn-hover-color: white;
+    --bs-btn-color: white;
+    --bs-btn-border-color: rgb(41, 39, 37);
+    --bs-btn-hover-bg: rgb(41, 39, 37);
+    --bs-btn-hover-border-color: rgb(41, 39, 37);
+    --bs-btn-active-bg: rgb(41, 39, 37);
+    --bs-btn-active-border-color:rgb(41, 39, 37);
+}
+
+.daterangepicker td.active,
+.daterangepicker td.active:hover,
+.daterangepicker td.active:focus {
+    background-color: rgb(41, 39, 37) !important;
+}
+
+
+/* Calendar.css */
+.daterangepicker {
+    transform: translateX(-50%);
+    left: 50% !important;
+    right: auto !important;
+}
+
+#my-tooltip{
+    background-color: #1c1b1b !important;
+}
+

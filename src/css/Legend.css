@@ -1,0 +1,87 @@
+.legend {
+    z-index: 500;
+    position: absolute;
+    top: 10px;
+    left: 20px;
+    background: #fff;
+    padding: 10px;
+    border: 1px solid #ccc;
+}
+
+.legend-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 5px;
+    margin-left: 5px;
+}
+
+.legend-icon {
+    cursor: pointer;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin-right: 5px;
+    margin-bottom: 5px;
+}
+
+.text-left {
+    position: absolute;
+    left: 0;
+}
+
+.my-modal {
+    width: 70em !important;
+    justify-content: center !important;
+}
+
+.modal-title {
+    display: flex;
+    align-items: center;
+}
+
+
+.card {
+    border: 1px solid #ccc;
+    padding: 20px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+    cursor: pointer;
+}
+
+img {
+    border-radius: 5px 5px 0 0;
+}
+
+.container {
+    padding: 2px 16px;
+}
+
+.grid-container {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+.footer-icons{
+    width:30px;
+    margin-right: 7px;
+    transition: transform 0.3s;
+}
+
+.footer-icons:hover{
+    transform: translateY(-5px);
+
+}
+
+.popup {
+    opacity: 0; /* Set initial opacity to 0 */
+    transition: opacity 0.3s ease; /* Add transition property */
+}
+
+.popup.open {
+    opacity: 1; /* Set opacity to 1 when the popup is open */
+}
+

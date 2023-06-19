@@ -1,0 +1,120 @@
+.map_components .button {
+    display: inline-block;
+    margin-right: 5px;
+    min-width: 100px;
+    background: #5caa32; /* Updated main color */
+    border: none;
+    outline: none;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 16px;
+    border-radius: 3px;
+    box-shadow: 0 2px 0px #5caa32; /* Updated box shadow */
+    border-bottom: 2px solid #4e8f29; /* Updated border color */
+}
+
+.map_components .button:hover {
+    background: #4f991f; /* Updated hover background color */
+    box-shadow: 0 2px 1px #4f991f; /* Updated hover box shadow */
+    border-bottom: 2px solid #477d1c; /* Updated hover border color */
+    transition: all 0.1s ease-in;
+}
+
+.map_components .button:active {
+    transform: translateY(2px);
+    border-bottom-width: 2px;
+    box-shadow: none;
+}
+
+.wp-core-ui .button-primary.focus,
+.wp-core-ui .button-primary.hover,
+.wp-core-ui .button-primary:focus,
+.wp-core-ui .button-primary:hover {
+    background: #FFFFFF; /* White */
+    border-color: #CCCCCC; /* Light gray */
+    color: #000000; /* Black */
+}
+
+.wp-core-ui .button-group.button-large .button,
+.wp-core-ui .button.button-large {
+    height: 30px;
+    line-height: 28px;
+    padding: 0 12px 2px;
+}
+
+.wp-core-ui .button-primary {
+    background: #FFFFFF; /* White */
+    border-color: #d3cece; /* Medium gray */
+    box-shadow: 0 1px 0 #d3cece; /* Medium gray */
+    color: #000000; /* Black */
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.wp-core-ui .button,
+.wp-core-ui .button-primary,
+.wp-core-ui .button-secondary {
+    display: inline-block;
+    text-decoration: none;
+    font-size: 13px;
+    line-height: 26px;
+    height: 28px;
+    margin: 0;
+    padding: 0 10px 1px;
+    cursor: pointer;
+    border-width: 1px;
+    border-style: solid;
+    -webkit-appearance: none;
+    border-radius: 3px;
+    white-space: nowrap;
+    box-sizing: border-box;
+}
+
+.map_components .row {
+    display: grid;
+    grid-template-columns: auto auto;
+    grid-gap: 10px;
+    align-items: start;
+}
+
+.map_components .column {
+    padding: 2px;
+
+}
+
+.value-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.disabled {
+    cursor: not-allowed;
+}
+
+.map_components li {
+    margin: 5px 20px;
+}
+
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.bounce-animation {
+    animation: bounce 0.5s;
+    animation-iteration-count: 1;
+}
+
+
+
+
+
+
+
