@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useEffect, useState } from "react";
 import * as Highcharts from '../code/highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import * as ChartModuleMore from '../code/highcharts-more';
@@ -13,20 +13,9 @@ const GaugeChart = ({ min, max, title, valueSuffix, measure }) => {
     const gaugeOptions = {
         chart: {
             type: 'solidgauge',
-            height: '400px',
-            width: 200,
-            backgroundColor: 'transparent',
-            style: {
-                fontFamily: 'Arial, sans-serif',
-            },
         },
         title: {
             text: title,
-            style: {
-                fontSize: '20px',
-                fontWeight: 'bold',
-                color: '#333',
-            },
         },
         pane: {
             center: ['50%', '30%'],
@@ -59,17 +48,9 @@ const GaugeChart = ({ min, max, title, valueSuffix, measure }) => {
             tickAmount: 2,
             title: {
                 y: -70,
-                style: {
-                    fontSize: '16px',
-                    color: '#333',
-                },
             },
             labels: {
                 y: 16,
-                style: {
-                    fontSize: '14px',
-                    color: '#333',
-                },
             },
         },
         plotOptions: {
@@ -78,15 +59,22 @@ const GaugeChart = ({ min, max, title, valueSuffix, measure }) => {
                     y: 5,
                     borderWidth: 0,
                     useHTML: true,
-                    style: {
-                        fontSize: '18px',
-                        color: '#333',
-                    },
                 },
             },
         },
-        series: [
-            {
+    };
+
+    useEffect(() => {
+        const chartOptions = {
+            chart: {
+                height: '400px',
+                width: 200,
+                backgroundColor: 'transparent'
+            },
+            credits: {
+                enabled: false,
+            },
+            series: [{
                 data: [measure],
                 dataLabels: {
                     format:
@@ -98,17 +86,17 @@ const GaugeChart = ({ min, max, title, valueSuffix, measure }) => {
                 tooltip: {
                     valueSuffix: valueSuffix,
                 },
+            }],
+            yAxis: {
+                min: min,
+                max: max,
+                tickInterval: 0,
             },
-        ],
-        yAxis: {
-            min: min,
-            max: max,
-            tickInterval: 0,
-        },
-    };
+        };
 
-    useEffect(() => {
-        setChartOptions(gaugeOptions);
+        const mergedOptions = Highcharts.merge(gaugeOptions, chartOptions);
+
+        setChartOptions(mergedOptions);
     }, [min, max, title, valueSuffix, measure]);
 
     return (
