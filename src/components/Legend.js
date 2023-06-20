@@ -152,7 +152,7 @@ const Legend = ({mapRef, locations}) => {
             if (mapRef.current) {
                 Object.keys(locations).forEach(key => {
                     if (newValue === locations[key].name) {
-                        mapInstance.flyTo([locations[key].latitude, locations[key].longitude], 18, {
+                        mapInstance.flyTo([locations[key].latitude, locations[key].longitude], 14, {
                             animate: true, duration: 1.5
                         });
                     }
