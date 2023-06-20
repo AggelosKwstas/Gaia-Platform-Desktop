@@ -1,5 +1,5 @@
-import React, {useEffect, useRef} from 'react';
-import Highcharts from 'highcharts';
+import React, { useEffect, useRef } from 'react';
+import Highcharts, { time } from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import exporting from 'highcharts/modules/exporting';
 import exportData from 'highcharts/modules/export-data';
@@ -9,14 +9,15 @@ exporting(Highcharts);
 exportData(Highcharts);
 boost(Highcharts);
 
-export default function Graph({xValues, yValues, title, measurementUnit}) {
+export default function Graph({ xValues, yValues, title, measurementUnit }) {
     const chartRef = useRef(null);
 
-    const generateData = (xValues, yValues) => {
+    const generateData = (yValues) => {
         const data = [];
         for (let i = 0; i < yValues.length; i++) {
-            data.push([xValues[i], yValues[i]]);
+            data.push([i, yValues[i]]);
         }
+
         return data;
     };
 
@@ -40,7 +41,7 @@ export default function Graph({xValues, yValues, title, measurementUnit}) {
 
     const options = {
         chart: {
-            zoomType: "x"
+            zoomType: 'x',
         },
         colors: ['#30730e'],
         title: {
@@ -67,26 +68,28 @@ export default function Graph({xValues, yValues, title, measurementUnit}) {
                 dataGrouping: {
                     enabled: true,
                     forced: true,
-                }
+                },
             },
         },
         xAxis: {
-            categories: xValues,
             tickInterval: 20,
             labels: {
                 formatter: function () {
-                    const dateTime = new Date(this.value);
-                    const hours = dateTime.getHours();
-                    const minutes = dateTime.getMinutes();
-                    let time = '';
+                    const index = Math.round(this.value);
+                    if (index >= 0 && index < xValues.length) {
+                        const dateTime = new Date(xValues[index]);
+                        const hours = dateTime.getHours();
+                        const minutes = dateTime.getMinutes();
+                        let time = '';
 
-                    if (hours >= 12) {
-                        time = (hours === 12 ? '12' : hours - 12) + ':' + ('0' + minutes).slice(-2) + ' PM';
-                    } else {
-                        time = hours + ':' + ('0' + minutes).slice(-2) + ' AM';
+                        if (hours >= 12) {
+                            time = (hours === 12 ? '12' : hours - 12) + ':' + ('0' + minutes).slice(-2) + ' PM';
+                        } else {
+                            time = hours + ':' + ('0' + minutes).slice(-2) + ' AM';
+                        }
+
+                        return time;
                     }
-
-                    return time;
                 },
             },
         },
@@ -109,8 +112,8 @@ export default function Graph({xValues, yValues, title, measurementUnit}) {
     };
 
     return (
-        <div style={{height: '100%', width: '100%'}}>
-            <HighchartsReact highcharts={Highcharts} options={options} ref={chartRef}/>
+        <div style={{ height: '100%', width: '100%' }}>
+            <HighchartsReact highcharts={Highcharts} options={options} ref={chartRef} />
         </div>
     );
 }

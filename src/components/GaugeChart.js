@@ -2,12 +2,12 @@ import * as ChartModuleMore from 'highcharts/highcharts-more.js';
 import HighchartsReact from 'highcharts-react-official';
 import HCSoldGauge from 'highcharts/modules/solid-gauge';
 import Highcharts from 'highcharts';
-import {useEffect, useState} from "react";
+import { useEffect, useState } from "react";
 
 ChartModuleMore(Highcharts);
 HCSoldGauge(Highcharts);
 
-const GaugeChart = ({min, max, title, valueSuffix, measure}) => {
+const GaugeChart = ({ min, max, title, valueSuffix, measure }) => {
     const [chartOptions, setChartOptions] = useState(null);
 
     const gaugeOptions = {
@@ -24,7 +24,7 @@ const GaugeChart = ({min, max, title, valueSuffix, measure}) => {
             endAngle: 90,
             background: {
                 backgroundColor:
-                Highcharts.defaultOptions.legend.backgroundColor,
+                    Highcharts.defaultOptions.legend.backgroundColor,
                 innerRadius: '60%',
                 outerRadius: '100%',
                 shape: 'arc',
@@ -67,11 +67,7 @@ const GaugeChart = ({min, max, title, valueSuffix, measure}) => {
     };
 
 
-
     useEffect(() => {
-
-        console.log('min:', min, 'max:', max);
-
         const chartOptions = {
             chart: {
                 height: '400px',
@@ -108,7 +104,7 @@ const GaugeChart = ({min, max, title, valueSuffix, measure}) => {
     return (
         <div>
             {chartOptions && (
-                <HighchartsReact highcharts={Highcharts} options={chartOptions}/>
+                <HighchartsReact highcharts={Highcharts} options={chartOptions} />
             )}
         </div>
     );

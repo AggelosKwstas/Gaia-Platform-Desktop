@@ -189,7 +189,6 @@ const Graphs = React.memo(() => {
             setReadValue12([]);
             setReadValue13([]);
             setReadValue14([]);
-            setReadTimestamps([]);
             readDates[sensorFilter].map((item, index) => {
                 if (item.sensor_type_id === 3) {
                     setReadTimestamps(prev => [...prev, item['timestamp']]);
@@ -433,7 +432,7 @@ const Graphs = React.memo(() => {
                 {isClicked && <GraphsLoader/>}
                 {readDates && readDates[sensorFilter] && readDates[sensorFilter][0] && !isClicked && (
                     <>
-                        <div>{readValue3.length}</div>
+                        <div>{JSON.stringify(readTimestamps,null,2)}</div>
                         <Container fluid style={{marginTop: '1em'}}>
                             <NavAsset start={startDate} end={endDate}/>
                             <div style={{marginTop: '0.1em'}}>
