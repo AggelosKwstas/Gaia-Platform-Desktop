@@ -1,5 +1,5 @@
 import React, {useEffect, useRef} from 'react';
-import Highcharts from 'highcharts';
+import Highcharts from '../code/highcharts';
 import HighchartsReact from 'highcharts-react-official';
 import exporting from 'highcharts/modules/exporting';
 import exportData from 'highcharts/modules/export-data';
