@@ -1,8 +1,8 @@
-import { useEffect, useState } from "react";
-import * as Highcharts from 'highcharts';
+import { useState, useEffect } from "react";
+import * as Highcharts from '../code/highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import * as ChartModuleMore from 'highcharts/highcharts-more';
-import * as HCSoldGauge from 'highcharts/modules/solid-gauge';
+import * as ChartModuleMore from '../code/highcharts-more';
+import * as HCSoldGauge from '../code/modules/solid-gauge';
 
 ChartModuleMore(Highcharts);
 HCSoldGauge(Highcharts);
@@ -13,9 +13,20 @@ const GaugeChart = ({ min, max, title, valueSuffix, measure }) => {
     const gaugeOptions = {
         chart: {
             type: 'solidgauge',
+            height: '400px',
+            width: 200,
+            backgroundColor: 'transparent',
+            style: {
+                fontFamily: 'Arial, sans-serif',
+            },
         },
         title: {
             text: title,
+            style: {
+                fontSize: '20px',
+                fontWeight: 'bold',
+                color: '#333',
+            },
         },
         pane: {
             center: ['50%', '30%'],
@@ -23,7 +34,6 @@ const GaugeChart = ({ min, max, title, valueSuffix, measure }) => {
             startAngle: -90,
             endAngle: 90,
             background: {
-                backgroundColor: Highcharts.defaultOptions.legend.backgroundColor,
                 innerRadius: '60%',
                 outerRadius: '100%',
                 shape: 'arc',
@@ -33,9 +43,6 @@ const GaugeChart = ({ min, max, title, valueSuffix, measure }) => {
             enabled: false,
         },
         tooltip: {
-            enabled: false,
-        },
-        credits: {
             enabled: false,
         },
         yAxis: {
@@ -52,9 +59,17 @@ const GaugeChart = ({ min, max, title, valueSuffix, measure }) => {
             tickAmount: 2,
             title: {
                 y: -70,
+                style: {
+                    fontSize: '16px',
+                    color: '#333',
+                },
             },
             labels: {
                 y: 16,
+                style: {
+                    fontSize: '14px',
+                    color: '#333',
+                },
             },
         },
         plotOptions: {
@@ -63,8 +78,32 @@ const GaugeChart = ({ min, max, title, valueSuffix, measure }) => {
                     y: 5,
                     borderWidth: 0,
                     useHTML: true,
+                    style: {
+                        fontSize: '18px',
+                        color: '#333',
+                    },
                 },
             },
+        },
+        series: [
+            {
+                data: [measure],
+                dataLabels: {
+                    format:
+                        '<div style="text-align:center"></br>' +
+                        '<span style="font-size:19px"><b>{y}</b></span><br/>' +
+                        `<span style="font-size:18px"><b>${valueSuffix}</b></span>` +
+                        '</div>',
+                },
+                tooltip: {
+                    valueSuffix: valueSuffix,
+                },
+            },
+        ],
+        yAxis: {
+            min: min,
+            max: max,
+            tickInterval: 0,
         },
     };
 
