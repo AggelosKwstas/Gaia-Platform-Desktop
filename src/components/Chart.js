@@ -45,7 +45,7 @@ export default function Graph({ xValues, yValues, title, measurementUnit }) {
                 data: [],
                 name: title,
                 marker: {
-                    radius: 5,
+                    radius: 3,
                 },
                 animation: {
                     duration: 700,
