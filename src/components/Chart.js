@@ -1,14 +1,15 @@
 import React, { useEffect, useRef } from 'react';
-import Highcharts from '../code/highcharts';
+import * as Highcharts from '../code/highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import exporting from '../code/modules/exporting';
-import exportData from '../code/modules/export-data';;
+import * as exporting from '../code/modules/exporting';
+import * as exportData from '../code/modules/export-data';
 
 // Initialize the exporting module
 exporting(Highcharts);
 exportData(Highcharts);
 
-export default function Graph({xValues, yValues, title, measurementUnit}) {
+
+export default function Graph({ xValues, yValues, title, measurementUnit }) {
     const chartRef = useRef(null);
 
     const generateData = (xValues, yValues) => {
@@ -91,15 +92,15 @@ export default function Graph({xValues, yValues, title, measurementUnit}) {
             enabled: true,
             buttons: {
                 contextButton: {
-                    menuItems: ['downloadPNG'],
+                    menuItems: ['downloadPNG', 'downloadPDF']
                 },
             },
         },
     };
 
     return (
-        <div style={{height: '100%', width: '100%'}}>
-            <HighchartsReact highcharts={Highcharts} options={options} ref={chartRef}/>
+        <div style={{ height: '100%', width: '100%' }}>
+            <HighchartsReact highcharts={Highcharts} options={options} ref={chartRef} />
         </div>
     );
 }

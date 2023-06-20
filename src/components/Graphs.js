@@ -1,5 +1,5 @@
-import React, {useEffect, useState} from 'react';
-import {useLocation, useNavigate} from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useLocation, useNavigate } from 'react-router-dom';
 import '../css/graphLoading.css';
 import axios from 'axios';
 import Container from 'react-bootstrap/Container';
@@ -8,11 +8,11 @@ import Col from 'react-bootstrap/Col';
 import DatePicker from './DatePicker';
 import GraphsLoader from "./GraphsLoader";
 import 'react-tooltip/dist/react-tooltip.css'
-import {Tooltip} from 'react-tooltip'
+import { Tooltip } from 'react-tooltip'
 import ScrollToTop from "react-scroll-to-top";
 import ChartBigger from '../components/ChartBig';
 import GaugeChart from "../components/GaugeChart";
-import {convertSubscriptTagsToCharacters} from './Map';
+import { convertSubscriptTagsToCharacters } from './Map';
 
 const NavAsset = React.lazy(() => import('../components/GraphNavbar'));
 const TopAsset = React.lazy(() => import('../components/GraphTopbar'));
@@ -243,21 +243,21 @@ const Graphs = React.memo(() => {
     return (
         <>
             <NavbarAsset sensorName={location.state.sensor_name}
-                         lastTimestamp={data[data.length - 1][sensorFilter][size - 1]['timestamp'].split(' ')[0]}
-                         handleRedirect={handleRedirect}/>
+                lastTimestamp={data[data.length - 1][sensorFilter][size - 1]['timestamp'].split(' ')[0]}
+                handleRedirect={handleRedirect} />
             <ScrollToTop smooth color="#292725"
-                         viewBox="0 0 24 24"
-                         svgPath="M17,13.41,12.71,9.17a1,1,0,0,0-1.42,0L7.05,13.41a1,1,0,0,0,0,1.42,1,1,0,0,0,1.41,0L12,11.29l3.54,3.54a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29A1,1,0,0,0,17,13.41Z"
+                viewBox="0 0 24 24"
+                svgPath="M17,13.41,12.71,9.17a1,1,0,0,0-1.42,0L7.05,13.41a1,1,0,0,0,0,1.42,1,1,0,0,0,1.41,0L12,11.29l3.54,3.54a1,1,0,0,0,.7.29,1,1,0,0,0,.71-.29A1,1,0,0,0,17,13.41Z"
             />
-            <div style={{paddingTop: '3em'}}>
+            <div style={{ paddingTop: '3em' }}>
                 <Container fluid>
                     <TopAsset
-                        transmission={formatTime(data[data.length - 1][sensorFilter][size - 1]['timestamp'].split(' ')[1])}/>
+                        transmission={formatTime(data[data.length - 1][sensorFilter][size - 1]['timestamp'].split(' ')[1])} />
                     <div>
                         <Row className="pt-1 mb-3">
                             <Container fluid>
-                                <section className="bg-light" style={{height: 'auto'}}>
-                                    <Row style={{display: 'flex', justifyContent: 'center', paddingTop: '100px'}}>
+                                <section className="bg-light" style={{ height: 'auto' }}>
+                                    <Row style={{ display: 'flex', justifyContent: 'center', paddingTop: '100px' }}>
                                         <Col lg="2" md="3" sm="4" xs="6"> <GaugeChart
                                             min={0}
                                             max={18}
@@ -299,7 +299,7 @@ const Graphs = React.memo(() => {
                                         />
                                         </Col>
                                     </Row>
-                                    <Row style={{display: 'flex', justifyContent: 'center'}}>
+                                    <Row style={{ display: 'flex', justifyContent: 'center' }}>
                                         <Col lg="2" md="3" sm="4" xs="6"> <GaugeChart
                                             min={0}
                                             max={300}
@@ -350,60 +350,60 @@ const Graphs = React.memo(() => {
                     <Row>
                         <Col lg="6" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                             <MemoizedChart xValues={timestamps} yValues={value_3}
-                                           title={convertSubscriptTagsToCharacters('O<sub>3</sub>')}
-                                           measurementUnit={'ppm'}/>
+                                title={convertSubscriptTagsToCharacters('O<sub>3</sub>')}
+                                measurementUnit={'ppm'} />
                         </Col>
                         <Col lg="6" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                             <MemoizedChart xValues={timestamps} yValues={value_4} title={'Environment Temperature'}
-                                           measurementUnit={convertSubscriptTagsToCharacters('°C')}/>
+                                measurementUnit={convertSubscriptTagsToCharacters('°C')} />
                         </Col>
                     </Row>
                     <Row className="pt-1 mb-1">
                         <Col lg="6" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                             <MemoizedChart xValues={timestamps} yValues={value_5} title={'Humidity'}
-                                           measurementUnit={'%'}/>
+                                measurementUnit={'%'} />
                         </Col>
                         <Col lg="6" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                             <MemoizedChart xValues={timestamps} yValues={value_6} title={'Battery'}
-                                           measurementUnit={'%'}/>
+                                measurementUnit={'%'} />
                         </Col>
                     </Row>
                     <Row className="pt-1 mb-1">
                         <Col lg="6" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                             <MemoizedChart xValues={timestamps} yValues={value_8} title={'PM 1.0'}
-                                           measurementUnit={convertSubscriptTagsToCharacters('μg/m3')}/>
+                                measurementUnit={convertSubscriptTagsToCharacters('μg/m3')} />
                         </Col>
                         <Col lg="6" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                             <MemoizedChart xValues={timestamps} yValues={value_9} title={'PM 2.5'}
-                                           measurementUnit={convertSubscriptTagsToCharacters('μg/m3')}/>
+                                measurementUnit={convertSubscriptTagsToCharacters('μg/m3')} />
                         </Col>
                     </Row>
                     <Row className="pt-1 mb-1">
                         <Col lg="6" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                             <MemoizedChart xValues={timestamps} yValues={value_10} title={'PM 10'}
-                                           measurementUnit={convertSubscriptTagsToCharacters('μg/m3')}/>
+                                measurementUnit={convertSubscriptTagsToCharacters('μg/m3')} />
                         </Col>
                         <Col lg="6" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                             <MemoizedChart xValues={timestamps} yValues={value_11}
-                                           title={convertSubscriptTagsToCharacters('SO<sub>2</sub>')}
-                                           measurementUnit={'ppm'}/>
+                                title={convertSubscriptTagsToCharacters('SO<sub>2</sub>')}
+                                measurementUnit={'ppm'} />
                         </Col>
                     </Row>
                     <Row className="pt-1 mb-1">
                         <Col lg="6" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                             <MemoizedChart xValues={timestamps} yValues={value_12} title={'NO'}
-                                           measurementUnit={'ppm'}/>
+                                measurementUnit={'ppm'} />
                         </Col>
                         <Col lg="6" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                             <MemoizedChart xValues={timestamps} yValues={value_13}
-                                           title={convertSubscriptTagsToCharacters('NO<sub>2</sub>')}
-                                           measurementUnit={'ppm'}/>
+                                title={convertSubscriptTagsToCharacters('NO<sub>2</sub>')}
+                                measurementUnit={'ppm'} />
                         </Col>
                     </Row>
                     <Row className="pt-1 mb-3">
                         <Col lg="12" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                             <MemoizedChart xValues={timestamps} yValues={value_14} title={'Pressure'}
-                                           measurementUnit={'Pa'}/>
+                                measurementUnit={'Pa'} />
                         </Col>
                     </Row>
                 </Container>
@@ -416,85 +416,85 @@ const Graphs = React.memo(() => {
                     data-tooltip-place="right"
                     data-tooltip-offset="6"
                 >
-                    <DatePicker callback={handleDatepickerClick} sensor={sensor} handleData={handleReadDates}/>
+                    <DatePicker callback={handleDatepickerClick} sensor={sensor} handleData={handleReadDates} />
                 </a>
-                <Tooltip id="my-tooltip"/>
-                {isClicked && <GraphsLoader/>}
+                <Tooltip id="my-tooltip" />
+                {isClicked && <GraphsLoader />}
                 {readDates && readDates[sensorFilter] && readDates[sensorFilter][0] && !isClicked && (
                     <>
-                        <Container fluid style={{marginTop: '1em'}}>
-                            <NavAsset start={startDate} end={endDate}/>
-                            <div style={{marginTop: '0.1em'}}>
+                        <Container fluid style={{ marginTop: '1em' }}>
+                            <NavAsset start={startDate} end={endDate} />
+                            <div style={{ marginTop: '0.1em' }}>
                                 <Row className="pt-1 mb-3 h-75">
                                     <Col lg="12" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                                         <ChartBigger xValues={readTimestamps} yValues={readValue3}
-                                                     title={convertSubscriptTagsToCharacters('O<sub>3</sub>')}
-                                                     measurementUnit={'ppm'}/>
+                                            title={convertSubscriptTagsToCharacters('O<sub>3</sub>')}
+                                            measurementUnit={'ppm'} />
                                     </Col>
                                 </Row>
                                 <Row className="pt-1 mb-3">
                                     <Col lg="12" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                                         <ChartBigger xValues={readTimestamps} yValues={readValue4}
-                                                     title={'Environment Temperature'}
-                                                     measurementUnit={convertSubscriptTagsToCharacters('°C')}/>
+                                            title={'Environment Temperature'}
+                                            measurementUnit={convertSubscriptTagsToCharacters('°C')} />
                                     </Col>
                                 </Row>
                                 <Row className="pt-1 mb-3">
                                     <Col lg="12" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                                         <ChartBigger xValues={readTimestamps} yValues={readValue5} title={'Humidity'}
-                                                     measurementUnit={'%'}/>
+                                            measurementUnit={'%'} />
                                     </Col>
                                 </Row>
                                 <Row className="pt-1 mb-3">
                                     <Col lg="12" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                                         <ChartBigger xValues={readTimestamps} yValues={readValue6} title={'Battery'}
-                                                     measurementUnit={'%'}/>
+                                            measurementUnit={'%'} />
                                     </Col>
                                 </Row>
                                 <Row className="pt-1 mb-3">
                                     <Col lg="12" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                                         <ChartBigger xValues={readTimestamps} yValues={readValue8} title={'PM 1.0'}
-                                                     measurementUnit={convertSubscriptTagsToCharacters('μg/m3')}/>
+                                            measurementUnit={convertSubscriptTagsToCharacters('μg/m3')} />
                                     </Col>
                                 </Row>
                                 <Row className="pt-1 mb-3">
                                     <Col lg="12" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                                         <ChartBigger xValues={readTimestamps} yValues={readValue9} title={'PM 2.5'}
-                                                     measurementUnit={convertSubscriptTagsToCharacters('μg/m3')}/>
+                                            measurementUnit={convertSubscriptTagsToCharacters('μg/m3')} />
                                     </Col>
                                 </Row>
                                 <Row className="pt-1 mb-3">
                                     <Col lg="12" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                                         <ChartBigger xValues={readTimestamps} yValues={readValue10} title={'PM 10'}
-                                                     measurementUnit={convertSubscriptTagsToCharacters('μg/m3')}/>
+                                            measurementUnit={convertSubscriptTagsToCharacters('μg/m3')} />
                                     </Col>
                                 </Row>
                                 <Row className="pt-1 mb-3">
                                     <Col lg="12" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                                         <ChartBigger xValues={readTimestamps} yValues={readValue11}
-                                                     title={convertSubscriptTagsToCharacters('SO<sub>2</sub>')}
-                                                     measurementUnit={'ppm'}/>
+                                            title={convertSubscriptTagsToCharacters('SO<sub>2</sub>')}
+                                            measurementUnit={'ppm'} />
                                     </Col>
                                 </Row>
                                 <Row className="pt-1 mb-3">
                                     <Col lg="12" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                                         <ChartBigger xValues={readTimestamps} yValues={readValue12}
-                                                     title={convertSubscriptTagsToCharacters('NO')}
-                                                     measurementUnit={'ppm'}/>
+                                            title={convertSubscriptTagsToCharacters('NO')}
+                                            measurementUnit={'ppm'} />
                                     </Col>
                                 </Row>
                                 <Row className="pt-1 mb-3">
                                     <Col lg="12" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                                         <ChartBigger xValues={readTimestamps} yValues={readValue13}
-                                                     title={convertSubscriptTagsToCharacters('NO<sub>2</sub>')}
-                                                     measurementUnit={'ppm'}/>
+                                            title={convertSubscriptTagsToCharacters('NO<sub>2</sub>')}
+                                            measurementUnit={'ppm'} />
                                     </Col>
                                 </Row>
                                 <Row className="pt-1 mb-3">
                                     <Col lg="12" sm="12" xs="12" className="mb-3 mb-sm-2 mb-md-2">
                                         <ChartBigger xValues={readTimestamps} yValues={readValue14}
-                                                     title={'Pressure'}
-                                                     measurementUnit={'Pa'}/>
+                                            title={'Pressure'}
+                                            measurementUnit={'Pa'} />
                                     </Col>
                                 </Row>
                             </div>

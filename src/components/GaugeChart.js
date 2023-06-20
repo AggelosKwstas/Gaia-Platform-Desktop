@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import Highcharts from '../code/highcharts';
+import * as Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import * as ChartModuleMore from '../code/highcharts-more';
-import HCSoldGauge from '../code/modules/solid-gauge';
+import * as ChartModuleMore from 'highcharts/highcharts-more';
+import * as HCSoldGauge from 'highcharts/modules/solid-gauge';
 
 ChartModuleMore(Highcharts);
 HCSoldGauge(Highcharts);
@@ -13,6 +13,9 @@ const GaugeChart = ({ min, max, title, valueSuffix, measure }) => {
     const gaugeOptions = {
         chart: {
             type: 'solidgauge',
+            height: '400px',
+            width: 200,
+            backgroundColor: 'transparent',
         },
         title: {
             text: title,
@@ -23,8 +26,6 @@ const GaugeChart = ({ min, max, title, valueSuffix, measure }) => {
             startAngle: -90,
             endAngle: 90,
             background: {
-                backgroundColor:
-                    Highcharts.defaultOptions.legend.backgroundColor,
                 innerRadius: '60%',
                 outerRadius: '100%',
                 shape: 'arc',
@@ -64,43 +65,32 @@ const GaugeChart = ({ min, max, title, valueSuffix, measure }) => {
                 },
             },
         },
+        series: [
+            {
+                data: [measure],
+                dataLabels: {
+                    format:
+                        '<div style="text-align:center"></br>' +
+                        '<span style="font-size:19px"><b>{y}</b></span><br/>' +
+                        `<span style="font-size:18px"><b>${valueSuffix}</b></span>` +
+                        '</div>',
+                },
+                tooltip: {
+                    valueSuffix: valueSuffix,
+                },
+            },
+        ],
+        yAxis: {
+            min: min,
+            max: max,
+            tickInterval: 0,
+        },
     };
 
-
     useEffect(() => {
-        const chartOptions = {
-            chart: {
-                height: '400px',
-                width: 200,
-                backgroundColor: 'transparent'
-            },
-            credits: {
-                enabled: false,
-            },
-            series: [
-                {
-                    data: [measure],
-                    dataLabels: {
-                        format:
-                            '<div style="text-align:center"></br>' +
-                            '<span style="font-size:19px"><b>{y}</b></span><br/>' +
-                            `<span style="font-size:18px"><b>${valueSuffix}</b></span>` +
-                            '</div>',
-                    },
-                    tooltip: {
-                        valueSuffix: valueSuffix,
-                    },
-                },
-            ],
-            yAxis: {
-                min: min,
-                max: max,
-                tickInterval: 0,
-            },
-        };
-
-        setChartOptions(Highcharts.merge(gaugeOptions, chartOptions));
+        setChartOptions(gaugeOptions);
     }, [min, max, title, valueSuffix, measure]);
+
     return (
         <div>
             {chartOptions && (
