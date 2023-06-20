@@ -432,7 +432,6 @@ const Graphs = React.memo(() => {
                 {isClicked && <GraphsLoader/>}
                 {readDates && readDates[sensorFilter] && readDates[sensorFilter][0] && !isClicked && (
                     <>
-                        <div>{JSON.stringify(readTimestamps,null,2)}</div>
                         <Container fluid style={{marginTop: '1em'}}>
                             <NavAsset start={startDate} end={endDate}/>
                             <div style={{marginTop: '0.1em'}}>
