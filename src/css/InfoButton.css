@@ -26,50 +26,6 @@
     box-shadow: none;
 }
 
-.wp-core-ui .button-primary.focus,
-.wp-core-ui .button-primary.hover,
-.wp-core-ui .button-primary:focus,
-.wp-core-ui .button-primary:hover {
-    background: #FFFFFF; /* White */
-    border-color: #CCCCCC; /* Light gray */
-    color: #000000; /* Black */
-}
-
-.wp-core-ui .button-group.button-large .button,
-.wp-core-ui .button.button-large {
-    height: 30px;
-    line-height: 28px;
-    padding: 0 12px 2px;
-}
-
-.wp-core-ui .button-primary {
-    background: #FFFFFF; /* White */
-    border-color: #d3cece; /* Medium gray */
-    box-shadow: 0 1px 0 #d3cece; /* Medium gray */
-    color: #000000; /* Black */
-    font-weight: 600;
-    text-decoration: none;
-}
-
-.wp-core-ui .button,
-.wp-core-ui .button-primary,
-.wp-core-ui .button-secondary {
-    display: inline-block;
-    text-decoration: none;
-    font-size: 13px;
-    line-height: 26px;
-    height: 28px;
-    margin: 0;
-    padding: 0 10px 1px;
-    cursor: pointer;
-    border-width: 1px;
-    border-style: solid;
-    -webkit-appearance: none;
-    border-radius: 3px;
-    white-space: nowrap;
-    box-sizing: border-box;
-}
-
 .map_components .row {
     display: grid;
     grid-template-columns: auto auto;

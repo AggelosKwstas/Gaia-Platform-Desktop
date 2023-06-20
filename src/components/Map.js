@@ -1,14 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import L from 'leaflet';
-import { MapContainer, Marker, Popup, TileLayer, useMap } from 'react-leaflet';
+import {MapContainer, Marker, Popup, TileLayer, useMap} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
 import '../css/LoadingScreen.css';
 import Tooltip from "react-bootstrap/Tooltip";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
-import { useNavigate } from 'react-router-dom';
-import logo from '../img/Logo Gaia Platform.png';
+import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
+import {faLocationDot} from "@fortawesome/free-solid-svg-icons";
+import {useNavigate} from 'react-router-dom';
 
 const LegendAsset = React.lazy(() => import('./Legend'));
 
@@ -34,7 +33,7 @@ const greyIcon = L.icon({
 });
 
 const renderTooltip = (props) => (
-    <Tooltip id="button-tooltip" {...props} style={{ zIndex: 300 }}>
+    <Tooltip id="button-tooltip" {...props} style={{zIndex: 300}}>
         Simple tooltip
     </Tooltip>
 );
@@ -43,7 +42,7 @@ function convertDegreesCToSymbol(str) {
     return str.replace(/&deg;C/g, "°C");
 }
 
-function convertSubscriptTagsToCharacters(str) {
+export function convertSubscriptTagsToCharacters(str) {
     var regex = /<sub>(.*?)<\/sub>/g;
     return str.replace(regex, function (match, p1) {
         return p1.replace(/./g, function (char) {
@@ -106,7 +105,7 @@ function checkQuality(arr, array, position, data) {
 
     // If station is not working, return gray icon
     if (checkNullStation(arr, position)) {
-        return { icon: greyIcon, condition: null, flag: null };
+        return {icon: greyIcon, condition: null, flag: null};
     }
 
     relevantIndices.forEach(index => {
@@ -199,14 +198,14 @@ function checkQuality(arr, array, position, data) {
     }
 
     if (found_bad) {
-        return { icon: redIcon, condition: conditions_bad, flag: 'bad' }
+        return {icon: redIcon, condition: conditions_bad, flag: 'bad'}
     }
 
     if (!found_bad) {
-        return { icon: orangeIcon, condition: conditions_fair, flag: 'fair' }
+        return {icon: orangeIcon, condition: conditions_fair, flag: 'fair'}
     }
 
-    return { icon: greenIcon, condition: null, flag: null };
+    return {icon: greenIcon, condition: null, flag: null};
 }
 
 export default function Map() {
@@ -332,7 +331,7 @@ export default function Map() {
 
     const navigate = useNavigate();
     const handleRedirect = (sensor_id, type, name) => {
-        navigate('/Graphs', { state: { sensor: sensor_id, sensor_type: type, sensor_name: name } });
+        navigate('/Graphs', {state: {sensor: sensor_id, sensor_type: type, sensor_name: name}});
     };
 
     if (isLoading1) {
@@ -356,18 +355,18 @@ export default function Map() {
 
     return (
         <div className="map_components">
-            <LegendAsset mapRef={mapRef} locations={location} />
+            <LegendAsset mapRef={mapRef} locations={location}/>
             <MapContainer
                 ref={mapRef}
                 center={[39.6650, 20.8537]}
                 zoom={12}
-                style={{ width: '100vw', height: '100vh' }}
+                style={{width: '100vw', height: '100vh'}}
                 zoomControl={false}
                 whenCreated={handleMapLoad}
             >
                 <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" attribution={
                     '<b>Copyright © 2022</b>'
-                } />
+                }/>
                 {
                     coordinates.map((coordinate, index) => (
                         <Marker
@@ -377,15 +376,15 @@ export default function Map() {
                         >
                             {checkNullStation(found, index) && (
                                 <Popup>
-                                    <h6 style={{ textAlign: 'center' }}>
+                                    <h6 style={{textAlign: 'center'}}>
                                         <FontAwesomeIcon icon={faLocationDot}
-                                            className="bounce-animation" />&nbsp;&nbsp;
+                                                         className="bounce-animation"/>&nbsp;&nbsp;
                                         <b>{stations['tbl_sensor_node'][index]['description'].replace('Air Monitor', '')}</b>
                                     </h6>
-                                    <div style={{ textAlign: 'center' }}>Status: <b
-                                        style={{ color: '#bb2124' }}>Inactive</b>
+                                    <div style={{textAlign: 'center'}}>Status: <b
+                                        style={{color: '#bb2124'}}>Inactive</b>
                                     </div>
-                                    <div style={{ textAlign: 'center', fontSize: '15px' }}>
+                                    <div style={{textAlign: 'center', fontSize: '15px'}}>
                                         <div><b>Station is under</b></div>
                                         <div><b>maintenance</b></div>
                                     </div>
@@ -394,67 +393,67 @@ export default function Map() {
 
                             {!checkNullStation(found, index) && (
                                 <Popup>
-                                    <h6 style={{ textAlign: 'center' }}>
+                                    <h6 style={{textAlign: 'center'}}>
                                         <FontAwesomeIcon icon={faLocationDot}
-                                            className="bounce-animation" />&nbsp;&nbsp;
+                                                         className="bounce-animation"/>&nbsp;&nbsp;
                                         <b>{stations['tbl_sensor_node'][index]['description'].replace('Air Monitor', '')}</b>
                                     </h6>
-                                    <div style={{ textAlign: 'center' }}>Status: <b
-                                        style={{ color: '#22bb33' }}>Active</b>
+                                    <div style={{textAlign: 'center'}}>Status: <b
+                                        style={{color: '#22bb33'}}>Active</b>
                                     </div>
                                     {apiIcon && (
                                         <img
-                                            style={{ display: 'block', margin: '0 auto', width: '70px' }}
+                                            style={{display: 'block', margin: '0 auto', width: '70px'}}
                                             src={`http://openweathermap.org/img/w/${apiIcon}.png`}
                                             alt="Weather"
                                         />
                                     )}
                                     {types['tbl_sensor_type'].map((type, ind) => (
                                         ind === 0 ? (<>
-                                            <div style={{ marginBottom: '5px', textAlign: 'center' }}>
-                                                <b>Sensor readings for:</b>
-                                                <div> Today
-                                                    at {new Date(sensorData[index][ind]['timestamp']).toLocaleTimeString([], {
-                                                        hour: "2-digit",
-                                                        minute: "2-digit",
-                                                        second: "2-digit"
-                                                    }).replace('μ.μ.', "PM").replace("π.μ.", "ΑΜ")}</div>
-                                            </div>
-                                            {checkQuality(found, coordinate, index, sensorData).condition !== null && checkQuality(found, coordinate, index, sensorData).flag === 'bad' ? (
-                                                <div style={{ textAlign: 'center' }}>
-                                                    <div><b>Bad due to:</b></div>
-                                                    <ul>
-                                                        {checkQuality(found, coordinate, index, sensorData).condition.map(item => (
-                                                            <li style={{ color: 'red' }}>
-                                                                <b>{convertSubscriptTagsToCharacters(item)}</b>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
+                                                <div style={{marginBottom: '5px', textAlign: 'center'}}>
+                                                    <b>Sensor readings for:</b>
+                                                    <div> Today
+                                                        at {new Date(sensorData[index][ind]['timestamp']).toLocaleTimeString([], {
+                                                            hour: "2-digit",
+                                                            minute: "2-digit",
+                                                            second: "2-digit"
+                                                        }).replace('μ.μ.', "PM").replace("π.μ.", "ΑΜ")}</div>
                                                 </div>
-                                            ) : checkQuality(found, coordinate, index, sensorData).flag === 'fair' ? (
-                                                <div style={{ textAlign: 'center' }}>
-                                                    <div><b>Fair due to:</b></div>
-                                                    <ul>
-                                                        {checkQuality(found, coordinate, index, sensorData).condition.map(item => (
-                                                            <li style={{ color: 'orange' }}>
-                                                                <b>{convertSubscriptTagsToCharacters(item)}</b>
-                                                            </li>
-                                                        ))}
-                                                    </ul>
-                                                </div>
-                                            ) : null}
-                                            <div className="row">
-                                                <div className="column">
-                                                    <b>{convertSubscriptTagsToCharacters(type.description).replace('Environment', '').replace('Sensor Node', '')}:</b>
-                                                </div>
-                                                <div className="column">
-                                                    <div className="value-container">
-                                                        <div>{sensorData[index][ind]['value']}</div>
-                                                        <div>&nbsp;{convertDegreesCToSymbol(type.unit)}</div>
+                                                {checkQuality(found, coordinate, index, sensorData).condition !== null && checkQuality(found, coordinate, index, sensorData).flag === 'bad' ? (
+                                                    <div style={{textAlign: 'center'}}>
+                                                        <div><b>Bad due to:</b></div>
+                                                        <ul>
+                                                            {checkQuality(found, coordinate, index, sensorData).condition.map(item => (
+                                                                <li style={{color: 'red'}}>
+                                                                    <b>{convertSubscriptTagsToCharacters(item)}</b>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                ) : checkQuality(found, coordinate, index, sensorData).flag === 'fair' ? (
+                                                    <div style={{textAlign: 'center'}}>
+                                                        <div><b>Fair due to:</b></div>
+                                                        <ul>
+                                                            {checkQuality(found, coordinate, index, sensorData).condition.map(item => (
+                                                                <li style={{color: 'orange'}}>
+                                                                    <b>{convertSubscriptTagsToCharacters(item)}</b>
+                                                                </li>
+                                                            ))}
+                                                        </ul>
+                                                    </div>
+                                                ) : null}
+                                                <div className="row">
+                                                    <div className="column">
+                                                        <b>{convertSubscriptTagsToCharacters(type.description).replace('Environment', '').replace('Sensor Node', '')}:</b>
+                                                    </div>
+                                                    <div className="column">
+                                                        <div className="value-container">
+                                                            <div>{sensorData[index][ind]['value']}</div>
+                                                            <div>&nbsp;{convertDegreesCToSymbol(type.unit)}</div>
+                                                        </div>
                                                     </div>
                                                 </div>
-                                            </div>
-                                        </>
+                                            </>
                                         ) : sensorData[index] && sensorData[index][ind] && (
                                             <div className="row">
                                                 <div className="column">
@@ -469,12 +468,12 @@ export default function Map() {
                                             </div>
                                         )
                                     ))}
-                                    <div style={{ textAlign: 'center', marginTop: '5px' }}>
-                                        <button style={{ fontWeight: 300 }}
-                                            className="button"
-                                            onClick={() => {
-                                                handleRedirect(coordinate['sensor_node_id'], sensorTypes, stations['tbl_sensor_node'][index]['description'].replace('Air Monitor', ''));
-                                            }}
+                                    <div style={{textAlign: 'center', marginTop: '5px'}}>
+                                        <button style={{fontWeight: 300}}
+                                                className="button"
+                                                onClick={() => {
+                                                    handleRedirect(coordinate['sensor_node_id'], sensorTypes, stations['tbl_sensor_node'][index]['description'].replace('Air Monitor', ''));
+                                                }}
                                         >
                                             View station
                                         </button>

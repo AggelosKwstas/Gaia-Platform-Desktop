@@ -12,22 +12,12 @@ import {Tooltip} from 'react-tooltip'
 import ScrollToTop from "react-scroll-to-top";
 import ChartBigger from '../components/ChartBig';
 import GaugeChart from "../components/GaugeChart";
+import {convertSubscriptTagsToCharacters} from './Map';
 
 const NavAsset = React.lazy(() => import('../components/GraphNavbar'));
 const TopAsset = React.lazy(() => import('../components/GraphTopbar'));
 const NavbarAsset = React.lazy(() => import('../components/Navbar'));
 const ChartAsset = React.lazy(() => import('../components/Chart'));
-
-function convertSubscriptTagsToCharacters(str) {
-    var regex = /<sub>(.*?)<\/sub>/g;
-    return str.replace(regex, function (match, p1) {
-        return p1.replace(/./g, function (char) {
-            var charCode = char.charCodeAt(0);
-            var subscriptCode = charCode + 8272;
-            return String.fromCharCode(subscriptCode);
-        });
-    });
-}
 
 function loadingScreen(text) {
     return (
