@@ -38,6 +38,9 @@ const GaugeChart = ({ min, max, title, valueSuffix, measure }) => {
             tooltip: {
                 enabled: false,
             },
+            credits: {
+                enabled: false,
+            },
             yAxis: {
                 min: min,
                 max: max,
