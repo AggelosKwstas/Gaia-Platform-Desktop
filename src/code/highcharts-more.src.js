@@ -5,6 +5,7 @@
  *
  * License: www.highcharts.com/license
  */
+/* eslint-disable no-undef */
 (function (factory) {
     if (typeof module === 'object' && module.exports) {
         factory['default'] = factory;
@@ -49,7 +50,7 @@
         /**
          * @typedef {"arc"|"circle"|"solid"} Highcharts.PaneBackgroundShapeValue
          */
-        /* eslint-disable no-invalid-this, valid-jsdoc */
+        /* eslint-disable no-invalid-this, valid-jsdoc, no-undef, no-unused-expressions */
         Chart.prototype.collectionsWithUpdate.push('pane');
         /**
          * The Pane object allows options that are common to a set of X and Y axes.

@@ -1,9 +1,9 @@
-import React, { useEffect, useRef,useState } from 'react';
+import React, { useEffect, useRef } from 'react';
 import Highcharts from '../code/highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import exporting from 'highcharts/modules/exporting';
-import exportData from 'highcharts/modules/export-data';
-import boost from 'highcharts/modules/boost';
+import exporting from '../code/modules/exporting';
+import exportData from '../code/modules/export-data';
+import boost from '../code/modules/boost';
 
 exporting(Highcharts);
 exportData(Highcharts);
