@@ -1,8 +1,8 @@
 import React, { useEffect, useRef } from 'react';
-import * as Highcharts from '../code/highcharts';
+import * as Highcharts from 'highchartsAssets/highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import * as exporting from '../code/modules/exporting';
-import * as exportData from '../code/modules/export-data';
+import * as exporting from 'highchartsAssets/modules/exporting';
+import * as exportData from 'highchartsAssets/modules/export-data';
 
 // Initialize the exporting module
 exporting(Highcharts);
