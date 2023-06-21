@@ -12,6 +12,7 @@ import { Tooltip } from 'react-tooltip'
 import ScrollToTop from "react-scroll-to-top";
 import ChartBigger from '../components/ChartBig';
 import GaugeChart from "../components/GaugeChart";
+import Table from '../components/Table';
 import { convertSubscriptTagsToCharacters } from './Map';
 
 const NavAsset = React.lazy(() => import('../components/GraphNavbar'));
@@ -51,7 +52,6 @@ const Graphs = React.memo(() => {
     const [size, setSize] = useState(false);
     const [arraySize, setArraySize] = useState(false);
 
-
     const [timestamps, setTimestamps] = useState([]);
     const [value_3, setValue3] = useState([]);
     const [value_4, setValue4] = useState([]);
@@ -65,7 +65,6 @@ const Graphs = React.memo(() => {
     const [value_13, setValue13] = useState([]);
     const [value_14, setValue14] = useState([]);
 
-
     const [isClicked, setIsClicked] = useState(false);
     const [sensor, setSensor] = useState(null);
     const [types, setTypes] = useState(null);
@@ -74,7 +73,6 @@ const Graphs = React.memo(() => {
     const [endDate, setEndDate] = useState(null);
     const [readTimestamps, setReadTimestamps] = useState([]);
     const [readValue3, setReadValue3] = useState([]);
-
 
     const [readValue4, setReadValue4] = useState([]);
     const [readValue5, setReadValue5] = useState([]);
@@ -425,6 +423,7 @@ const Graphs = React.memo(() => {
                 {readDates && readDates[sensorFilter] && readDates[sensorFilter][0] && !isClicked && (
                     <>
                         <Container fluid style={{ marginTop: '1em' }}>
+                            <Table/>
                             <NavAsset start={startDate} end={endDate} />
                             <div style={{ marginTop: '0.1em' }}>
                                 <Row className="pt-1 mb-3 h-75">
