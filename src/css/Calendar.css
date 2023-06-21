@@ -50,3 +50,16 @@
     background-color: #1c1b1b !important;
 }
 
+
+.batteryBody{
+    stroke: black !important;
+}
+
+.batteryCap{
+    stroke: black !important;
+}
+
+.readingText{
+    font-size: 25px;
+    fill: white  !important;
+}

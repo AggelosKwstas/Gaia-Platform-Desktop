@@ -252,7 +252,9 @@ const Graphs = React.memo(() => {
             <div style={{ paddingTop: '3em' }}>
                 <Container fluid>
                     <TopAsset
-                        transmission={formatTime(data[data.length - 1][sensorFilter][size - 1]['timestamp'].split(' ')[1])} />
+                        transmission={formatTime(data[data.length - 1][sensorFilter][size - 1]['timestamp'].split(' ')[1])}
+                        battery = {value_6[value_6.length-1]}
+                        />
                     <div>
                         <Row className="pt-1 mb-3">
                             <Container fluid>
