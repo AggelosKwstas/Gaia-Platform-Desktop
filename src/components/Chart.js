@@ -4,7 +4,6 @@ import HighchartsReact from 'highcharts-react-official';
 import * as exporting from 'highchartsAssets/modules/exporting';
 import * as exportData from 'highchartsAssets/modules/export-data';
 
-// Initialize the exporting module
 exporting(Highcharts);
 exportData(Highcharts);
 
@@ -24,13 +23,10 @@ export default function Graph({ xValues, yValues, title, measurementUnit }) {
         if (chartRef.current) {
             const chart = chartRef.current.chart;
 
-            // Update the series data with the new x and y values
             chart.series[0].setData(generateData(xValues, yValues));
 
-            // Update the x-axis categories
             chart.xAxis[0].setCategories(xValues);
 
-            // Call the reflow method to update the chart layout
             chart.reflow();
         }
     }, [xValues, yValues]);

@@ -4,7 +4,6 @@ import HighchartsReact from 'highcharts-react-official';
 import * as exporting from 'highchartsAssets/modules/exporting';
 import * as exportData from 'highchartsAssets/modules/export-data';
 
-// Initialize the exporting module
 exporting(Highcharts);
 exportData(Highcharts);
 
