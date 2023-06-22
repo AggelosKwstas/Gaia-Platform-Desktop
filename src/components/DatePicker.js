@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState} from 'react';
 import DateRangePicker from 'react-bootstrap-daterangepicker';
 import '../css/Calendar.css';
 import 'bootstrap/dist/css/bootstrap.css';
@@ -42,8 +42,12 @@ export default function DatePicker({callback, sensor, handleData}) {
         fetchData();
     }
 
+    const initialSettings = {
+        maxDate: new Date(),
+      };
+
     return (
-        <DateRangePicker onApply={handleButtonClick}>
+        <DateRangePicker onApply={handleButtonClick} initialSettings={initialSettings}>
             <button className="custom-button" style={{marginBottom: '0.5rem'}}>
                 Choose dates &nbsp;&nbsp;
                 <FontAwesomeIcon icon={faCalendarDays}/>

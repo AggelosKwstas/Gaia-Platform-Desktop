@@ -2216,6 +2216,27 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
+"@tauri-apps/cli-win32-x64-msvc@1.4.0":
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/@tauri-apps/cli-win32-x64-msvc/-/cli-win32-x64-msvc-1.4.0.tgz"
+  integrity sha512-z8Olcnwp5aYhzqUAarFjqF+oELCjuYWnB2HAJHlfsYNfDCAORY5kct3Fklz8PSsubC3U2EugWn8n42DwnThurg==
+
+"@tauri-apps/cli@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/@tauri-apps/cli/-/cli-1.4.0.tgz"
+  integrity sha512-VXYr2i2iVFl98etQSQsqLzXgX96bnWiNZd1YADgatqwy/qecbd6Kl5ZAPB5R4ynsgE8A1gU7Fbzh7dCEQYFfmA==
+  optionalDependencies:
+    "@tauri-apps/cli-darwin-arm64" "1.4.0"
+    "@tauri-apps/cli-darwin-x64" "1.4.0"
+    "@tauri-apps/cli-linux-arm-gnueabihf" "1.4.0"
+    "@tauri-apps/cli-linux-arm64-gnu" "1.4.0"
+    "@tauri-apps/cli-linux-arm64-musl" "1.4.0"
+    "@tauri-apps/cli-linux-x64-gnu" "1.4.0"
+    "@tauri-apps/cli-linux-x64-musl" "1.4.0"
+    "@tauri-apps/cli-win32-arm64-msvc" "1.4.0"
+    "@tauri-apps/cli-win32-ia32-msvc" "1.4.0"
+    "@tauri-apps/cli-win32-x64-msvc" "1.4.0"
+
 "@testing-library/dom@^8.5.0":
   version "8.20.0"
   resolved "https://registry.npmjs.org/@testing-library/dom/-/dom-8.20.0.tgz"
@@ -3991,7 +4012,14 @@ cosmiconfig@^7.0.0:
     path-type "^4.0.0"
     yaml "^1.10.0"
 
-cross-spawn@^7.0.2, cross-spawn@^7.0.3:
+cross-env@^7.0.3:
+  version "7.0.3"
+  resolved "https://registry.npmjs.org/cross-env/-/cross-env-7.0.3.tgz"
+  integrity sha512-+/HKd6EgcQCJGh2PSjZuUitQBQynKor4wrFbRg4DtAgS1aWO+gU52xpH7M9ScGgXSYmAVS9bIJ8EzuaGw0oNAw==
+  dependencies:
+    cross-spawn "^7.0.1"
+
+cross-spawn@^7.0.1, cross-spawn@^7.0.2, cross-spawn@^7.0.3:
   version "7.0.3"
   resolved "https://registry.npmjs.org/cross-spawn/-/cross-spawn-7.0.3.tgz"
   integrity sha512-iRDPJKUPVEND7dHPO8rkbOnPpyDygcDFtWjpeWNCgy8WP2rXcxXL8TskReQl6OrB2G7+UJrags1q15Fudc7G6w==
