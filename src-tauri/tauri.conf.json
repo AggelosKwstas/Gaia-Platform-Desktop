@@ -8,7 +8,7 @@
   },
   "package": {
     "productName": "GAIA Platform",
-    "version": "0.1.0"
+    "version": "1.1.0"
   },
   "tauri": {
     "allowlist": {
@@ -17,7 +17,7 @@
     "bundle": {
       "active": true,
       "category": "DeveloperTool",
-      "copyright": "",
+      "copyright": "© Neuron Energy Solutions",
       "deb": {
         "depends": []
       },
@@ -39,7 +39,7 @@
         "signingIdentity": null
       },
       "resources": [],
-      "shortDescription": "",
+      "shortDescription": "GAIA",
       "targets": "all",
       "windows": {
         "certificateThumbprint": null,

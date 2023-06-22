@@ -7,7 +7,6 @@ import * as exportData from 'highchartsAssets/modules/export-data';
 exporting(Highcharts);
 exportData(Highcharts);
 
-
 export default function Graph({ xValues, yValues, title, measurementUnit }) {
     const chartRef = useRef(null);
 

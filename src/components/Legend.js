@@ -36,6 +36,11 @@ const Legend = ({ mapRef, locations }) => {
         });
     }, []);
 
+    // open links in the desktop app
+    function openLinkInNewWindow(url) {
+        window.open(url, '_blank');
+    }
+
     function filterStations(filter) {
 
         let greenUrl = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAlCAYAAAAjt+tHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB6ElEQVRYhe2XsWrjQBBAn4UxQoQULq406kN0HIeLcK39Q/ch90OqgwsTwi2kN/4AF8EsixDSFZ7xrY1kSUEiKTQwrOUVek+rWaGZlGUJwHq9ngIBMJNxSr+RAwWQAUWapjnApCxLhc+AUHImAkFP8EIEMsBJZmma5pPVaqXwCLiXMWSYFXCABd5lzPQuQ4F/M0uz6Rl8Eck2eZKfBZD7Sx+ZpdnEcUwURYRh2CvYOYe1FoPZJNvkEXkMfuGFwCBw4PqaWmeBVrvmIPAKiTNTC62y2vf7fS/gxWJR9XegJjfj7fdb7dzDn4fW59RFX/v8wzEKjAKfLtC4DZu2Udtz6uLrr8D4IhoFRoGh49NfRCpQVE3WfMn0FQWcHkHuJc65wYjetc/MgP/tkgOw1g4ioZ/leijMYurBbbJNngzVjUkcx8zn81aww+HAbrernJPGxOL1BYUcvMsJj1y2ZgGAwTwDjRIKT7bJL/lL6+u6NXNA0aY5PX/Dm6V5ubUSHvwnl7VV35w2tOc6+u3ba5WEB//hL/GVQHV7fitELATuJCOzNH99CQ/+XeBHSaegumgUqJG405UA/Ds/0gHeWqBC4l4kXgB95kdOxdUa3kngSiKSnMlUxmnpbRd4ZwFPQotSt6pusawLHOAfnpcLWC/XAGMAAAAASUVORK5CYII=";
@@ -152,7 +157,7 @@ const Legend = ({ mapRef, locations }) => {
             if (mapRef.current) {
                 Object.keys(locations).forEach(key => {
                     if (newValue === locations[key].name) {
-                        mapInstance.flyTo([locations[key].latitude, locations[key].longitude], 14, {
+                        mapInstance.flyTo([locations[key].latitude, locations[key].longitude], 16, {
                             animate: true, duration: 1.5
                         });
                     }
@@ -221,7 +226,7 @@ const Legend = ({ mapRef, locations }) => {
                     </h3>
                     </div>
                     <div className="grid-container">
-                        <div className="card">
+                        <div className="card" style={{ borderRadius: '15px' }}>
                             <div style={{ textAlign: 'center' }}>
                                 <img style={{ width: '70px', marginRight: 0 }} src={air} alt="Logo" />
                                 <div className="container">
@@ -232,7 +237,7 @@ const Legend = ({ mapRef, locations }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="card">
+                        <div className="card" style={{ borderRadius: '15px' }}>
                             <div style={{ textAlign: 'center' }}>
                                 <img style={{ width: '70px', marginRight: 0 }} src={noise} alt="Logo" />
                                 <div className="container">
@@ -244,7 +249,7 @@ const Legend = ({ mapRef, locations }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="card">
+                        <div className="card" style={{ borderRadius: '15px' }}>
                             <div style={{ textAlign: 'center' }}>
                                 <img style={{ width: '70px', marginRight: 0 }} src={plant} alt="Logo" />
                                 <div className="container">
@@ -256,7 +261,7 @@ const Legend = ({ mapRef, locations }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="card">
+                        <div className="card" style={{ borderRadius: '15px' }}>
                             <div style={{ textAlign: 'center' }}>
                                 <img style={{ width: '70px', marginRight: 0 }} src={town} alt="Logo" />
                                 <div className="container">
@@ -409,22 +414,38 @@ const Legend = ({ mapRef, locations }) => {
                 <Modal.Footer>
                     <div className="text-left"><h6 style={{ marginLeft: '7px' }}> © 2022 | <a
                         href="https://www.neuronenergy.com/"
-                        target="_blank">
+                        onClick={(e) => {
+                            e.preventDefault();
+                            openLinkInNewWindow('https://www.neuronenergy.com/');
+                        }}
+                    >
                         Neuron Energy Solutions
                     </a>. All
                         rights reserved.</h6></div>
                     <div style={{ float: 'right' }}>
-                        <a href="https://www.linkedin.com/company/neuron-energy-solutions/about/" target="_blank">
+                        <a href="https://www.linkedin.com/company/neuron-energy-solutions/about/" target="_blank" onClick={(e) => {
+                            e.preventDefault();
+                            openLinkInNewWindow('https://www.linkedin.com/company/neuron-energy-solutions/about/');
+                        }}>
                             <img className="footer-icons" src={linkedin} alt="Logo" />
                         </a>
-                        <a href="https://www.facebook.com/profile.php?id=100051469122856" target="_blank">
-                            <img className="footer-icons" src={facebook} alt="Logo" />
+                        <a href="https://www.facebook.com/profile.php?id=100051469122856" target="_blank" onClick={(e) => {
+                            e.preventDefault();
+                            openLinkInNewWindow('https://www.facebook.com/profile.php?id=100051469122856');
+                        }}>
+                            <img className="footer-icons" src={facebook} alt="Facebook" />
                         </a>
-                        <a href="https://twitter.com/SolarEye_PV" target="_blank">
-                            <img className="footer-icons" src={twitter} alt="Logo" />
+                        <a href="https://twitter.com/SolarEye_PV" target="_blank" onClick={(e) => {
+                            e.preventDefault();
+                            openLinkInNewWindow('https://twitter.com/SolarEye_PV');
+                        }}>
+                            <img className="footer-icons" src={twitter} alt="Twitter" />
                         </a>
-                        <a href="https://gr.pinterest.com/solareye/" target="_blank">
-                            <img className="footer-icons" src={pinterest} alt="Logo" />
+                        <a href="https://gr.pinterest.com/solareye/" target="_blank" onClick={(e) => {
+                            e.preventDefault();
+                            openLinkInNewWindow('https://gr.pinterest.com/solareye/');
+                        }}>
+                            <img className="footer-icons" src={pinterest} alt="Pinterest" />
                         </a>
                     </div>
                 </Modal.Footer>

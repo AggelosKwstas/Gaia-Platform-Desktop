@@ -2216,6 +2216,11 @@
   dependencies:
     defer-to-connect "^2.0.0"
 
+"@tauri-apps/api@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.npmjs.org/@tauri-apps/api/-/api-1.4.0.tgz"
+  integrity sha512-Jd6HPoTM1PZSFIzq7FB8VmMu3qSSyo/3lSwLpoapW+lQ41CL5Dow2KryLg+gyazA/58DRWI9vu/XpEeHK4uMdw==
+
 "@tauri-apps/cli-win32-x64-msvc@1.4.0":
   version "1.4.0"
   resolved "https://registry.npmjs.org/@tauri-apps/cli-win32-x64-msvc/-/cli-win32-x64-msvc-1.4.0.tgz"
