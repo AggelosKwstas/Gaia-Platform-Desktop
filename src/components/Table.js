@@ -38,17 +38,17 @@ export default function Table({
                 <tbody>
                 <tr>
                     <td><b>Average Values</b></td>
-                    <td>{value_3.length === 0 ? '0' : (value_3.reduce((x, y) => x + y) / value_3.length === 0 ? 0 : (value_3.reduce((x, y) => x + y) / value_3.length).toFixed(1)) + ' ppm'}</td>
-                    <td>{value_4.length === 0 ? '0' : (value_4.reduce((x, y) => x + y) / value_4.length === 0 ? 0 : (value_4.reduce((x, y) => x + y) / value_4.length).toFixed(1)) + ' ' + convertDegreesCToSymbol('&deg;C')}</td>
-                    <td>{value_5.length === 0 ? '0' : (value_5.reduce((x, y) => x + y) / value_5.length === 0 ? 0 : (value_5.reduce((x, y) => x + y) / value_5.length).toFixed(1)) + ' %'}</td>
-                    <td>{value_6.length === 0 ? '0' : (value_6.reduce((x, y) => x + y) / value_6.length === 0 ? 0 : (value_6.reduce((x, y) => x + y) / value_6.length).toFixed(1)) + ' %'}</td>
-                    <td>{value_8.length === 0 ? '0' : (value_8.reduce((x, y) => x + y) / value_8.length === 0 ? 0 : (value_8.reduce((x, y) => x + y) / value_8.length).toFixed(1)) + ' μg/m3'}</td>
-                    <td>{value_9.length === 0 ? '0' : (value_9.reduce((x, y) => x + y) / value_9.length === 0 ? 0 : (value_9.reduce((x, y) => x + y) / value_9.length).toFixed(1)) + ' μg/m3'}</td>
-                    <td>{value_10.length === 0 ? '0' : (value_10.reduce((x, y) => x + y) / value_10.length === 0 ? 0 : (value_10.reduce((x, y) => x + y) / value_10.length).toFixed(1)) + ' μg/m3'}</td>
-                    <td>{value_11.length === 0 ? '0' : ((value_11.reduce((x, y) => x + y) / value_11.length) === 0 ? '0' : (value_11.reduce((x, y) => x + y) / value_11.length).toFixed(1)) + ' ppm'}</td>
-                    <td>{value_12.length === 0 ? '0' : (value_12.reduce((x, y) => x + y) / value_12.length === 0 ? 0 : (value_12.reduce((x, y) => x + y) / value_12.length).toFixed(1)) + ' ppm'}</td>
-                    <td>{value_13.length === 0 ? '0' : (value_13.reduce((x, y) => x + y) / value_13.length === 0 ? 0 : (value_13.reduce((x, y) => x + y) / value_13.length).toFixed(1)) + ' ppm'}</td>
-                    <td>{value_14.length === 0 ? '0' : (value_14.reduce((x, y) => x + y) / value_14.length === 0 ? 0 : (value_14.reduce((x, y) => x + y) / value_14.length).toFixed(1)) + ' Pa'}</td>
+                    <td>{value_3.length === 0 ? '0' : (value_3.reduce((x, y) => x + y) / value_3.length === 0 ? 0 : (value_3.reduce((x, y) => x + y) / value_3.length).toFixed(2)) + ' ppm'}</td>
+                    <td>{value_4.length === 0 ? '0' : (value_4.reduce((x, y) => x + y) / value_4.length === 0 ? 0 : (value_4.reduce((x, y) => x + y) / value_4.length).toFixed(2)) + ' ' + convertDegreesCToSymbol('&deg;C')}</td>
+                    <td>{value_5.length === 0 ? '0' : (value_5.reduce((x, y) => x + y) / value_5.length === 0 ? 0 : (value_5.reduce((x, y) => x + y) / value_5.length).toFixed(2)) + ' %'}</td>
+                    <td>{value_6.length === 0 ? '0' : (value_6.reduce((x, y) => x + y) / value_6.length === 0 ? 0 : (value_6.reduce((x, y) => x + y) / value_6.length).toFixed(2)) + ' %'}</td>
+                    <td>{value_8.length === 0 ? '0' : (value_8.reduce((x, y) => x + y) / value_8.length === 0 ? 0 : (value_8.reduce((x, y) => x + y) / value_8.length).toFixed(2)) + ' μg/m3'}</td>
+                    <td>{value_9.length === 0 ? '0' : (value_9.reduce((x, y) => x + y) / value_9.length === 0 ? 0 : (value_9.reduce((x, y) => x + y) / value_9.length).toFixed(2)) + ' μg/m3'}</td>
+                    <td>{value_10.length === 0 ? '0' : (value_10.reduce((x, y) => x + y) / value_10.length === 0 ? 0 : (value_10.reduce((x, y) => x + y) / value_10.length).toFixed(2)) + ' μg/m3'}</td>
+                    <td>{value_11.length === 0 ? '0' : ((value_11.reduce((x, y) => x + y) / value_11.length) === 0 ? '0' : (value_11.reduce((x, y) => x + y) / value_11.length).toFixed(2)) + ' ppm'}</td>
+                    <td>{value_12.length === 0 ? '0' : (value_12.reduce((x, y) => x + y) / value_12.length === 0 ? 0 : (value_12.reduce((x, y) => x + y) / value_12.length).toFixed(2)) + ' ppm'}</td>
+                    <td>{value_13.length === 0 ? '0' : (value_13.reduce((x, y) => x + y) / value_13.length === 0 ? 0 : (value_13.reduce((x, y) => x + y) / value_13.length).toFixed(2)) + ' ppm'}</td>
+                    <td>{value_14.length === 0 ? '0' : (value_14.reduce((x, y) => x + y) / value_14.length === 0 ? 0 : (value_14.reduce((x, y) => x + y) / value_14.length).toFixed(2)) + ' Pa'}</td>
                 </tr>
 
                 <tr>

@@ -72,7 +72,7 @@ export default function Graph({ xValues, yValues, title, measurementUnit }) {
         },
         xAxis: {
             categories: xValues,
-            tickInterval: 100,
+            tickInterval: 10,
         },
         yAxis: {
             title: {
