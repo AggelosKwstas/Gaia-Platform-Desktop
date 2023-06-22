@@ -26,7 +26,7 @@ export default function Table() {
                     </tr>
                     <tr>
                         <td style={{ fontWeight: 'bold' }}>
-                            AVG
+                            Average Values
                         </td>
                         <td>
                             20
@@ -64,7 +64,7 @@ export default function Table() {
                     </tr>
                     <tr>
                         <td style={{ fontWeight: 'bold' }}>
-                            MAX
+                            Max Values
                         </td>
                         <td>
                             20
@@ -102,7 +102,7 @@ export default function Table() {
                     </tr>
                     <tr>
                         <td style={{ fontWeight: 'bold' }}>
-                            MIN
+                            Min Values
                         </td>
                         <td>
                             20

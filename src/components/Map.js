@@ -87,6 +87,7 @@ function checkQuality(arr, array, position, data) {
     let conditions_fair = [];
 
     let found_bad = false;
+    let found_fair = false;
 
     let fair_o3 = false;
     let bad_o3 = false;
@@ -179,29 +180,34 @@ function checkQuality(arr, array, position, data) {
 
     if (fair_o3) {
         conditions_fair.push('O<sub>3</sub>')
+        found_fair = true;
     }
 
     if (fair_so2) {
         conditions_fair.push('SO<sub>2</sub>')
+        found_fair = true;
     }
 
     if (fair_no2) {
         conditions_fair.push('NO<sub>2</sub>')
+        found_fair = true;
     }
 
     if (fair_pm1) {
         conditions_fair.push('PM 10')
+        found_fair = true;
     }
 
     if (fair_pm2) {
         conditions_fair.push('PM 2.5')
+        found_fair = true;
     }
 
     if (found_bad) {
         return { icon: redIcon, condition: conditions_bad, flag: 'bad' }
     }
 
-    if (!found_bad) {
+    if (!found_bad && found_fair) {
         return { icon: orangeIcon, condition: conditions_fair, flag: 'fair' }
     }
 
