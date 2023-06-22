@@ -38,7 +38,7 @@ const renderTooltip = (props) => (
     </Tooltip>
 );
 
-function convertDegreesCToSymbol(str) {
+export function convertDegreesCToSymbol(str) {
     return str.replace(/&deg;C/g, "°C");
 }
 

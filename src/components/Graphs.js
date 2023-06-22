@@ -72,9 +72,9 @@ const Graphs = React.memo(() => {
     const [readDates, setReadDates] = useState([]);
     const [startDate, setStartDate] = useState(null);
     const [endDate, setEndDate] = useState(null);
+
     const [readTimestamps, setReadTimestamps] = useState([]);
     const [readValue3, setReadValue3] = useState([]);
-
     const [readValue4, setReadValue4] = useState([]);
     const [readValue5, setReadValue5] = useState([]);
     const [readValue6, setReadValue6] = useState([]);
@@ -169,6 +169,7 @@ const Graphs = React.memo(() => {
 
     useEffect(() => {
         if (readDates && readDates[sensorFilter] && readDates[sensorFilter][0]) {
+            setTableValues([]);
             setReadValue3([]);
             setReadValue4([]);
             setReadValue5([]);
@@ -205,8 +206,18 @@ const Graphs = React.memo(() => {
                 else if (item.sensor_type_id === 14)
                     setReadValue14(prev => [...prev, item['value']]);
             })
+            setTableValues(prev => [...prev, readValue3]);
+            setTableValues(prev => [...prev, readValue4]);
+            setTableValues(prev => [...prev, readValue5]);
+            setTableValues(prev => [...prev, readValue6]);
+            setTableValues(prev => [...prev, readValue8]);
+            setTableValues(prev => [...prev, readValue9]);
+            setTableValues(prev => [...prev, readValue10]);
+            setTableValues(prev => [...prev, readValue11]);
+            setTableValues(prev => [...prev, readValue12]);
+            setTableValues(prev => [...prev, readValue13]);
+            setTableValues(prev => [...prev, readValue14]);
         }
-        console.log(readValue3);
     }, [readDates])
 
     if (isLoading1)
@@ -429,10 +440,19 @@ const Graphs = React.memo(() => {
                         <Container fluid style={{marginTop: '1em'}}>
                             <SumAsset/>
                             <div style={{marginTop: '0.1em'}}>
-                                <Row className="pt-1 mb-5">
+                                <Row className="pt-1 mb-3">
                                     <Container fluid>
                                         <section className="bg-light" style={{height: 'auto'}}>
-                                        <TableAsset/>
+                                            <TableAsset value_3={readValue3} value_4={readValue4} value_5={readValue5}
+                                                        value_6={readValue6}
+                                                        value_8={readValue8}
+                                                        value_9={readValue9}
+                                                        value_10={readValue10}
+                                                        value_11={readValue11}
+                                                        value_12={readValue12}
+                                                        value_13={readValue13}
+                                                        value_14={readValue14}
+                                            />
                                         </section>
                                     </Container>
                                 </Row>
