@@ -168,7 +168,7 @@ const Legend = ({ mapRef, locations }) => {
 
     return (
         <div>
-            <div className="legend" data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000">
+            <div className="legend" data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000" style={{marginTop:'30px'}}>
                 <h3 style={{ marginBottom: '10px', fontSize: '23px', cursor: 'help' }}>
                     <b>
                         <CustomTooltip />

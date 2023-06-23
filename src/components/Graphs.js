@@ -254,7 +254,7 @@ const Graphs = React.memo(() => {
     const MemoizedChart = React.memo(ChartAsset);
 
     return (
-        <>
+        <div style={{marginTop:'30px'}}>
             <NavbarAsset sensorName={location.state.sensor_name}
                          lastTimestamp={data[data.length - 1][sensorFilter][size - 1]['timestamp'].split(' ')[0]}
                          handleRedirect={handleRedirect}/>
@@ -539,7 +539,7 @@ const Graphs = React.memo(() => {
                 )}
             </div>
 
-        </>
+        </div>
     );
 });
 

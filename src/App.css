@@ -3,7 +3,8 @@
 }
 
 .map-container {
-  height: calc(100vh - 60px); /* Adjust the height based on your navbar's height */
+  height: calc(100vh - 60px);
+  /* Adjust the height based on your navbar's height */
   width: 100%;
   position: relative;
 }
@@ -39,7 +40,45 @@
   from {
     transform: rotate(0deg);
   }
+
   to {
     transform: rotate(360deg);
   }
+}
+
+#title-bar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  height: 30px;
+  background-color: rgb(41, 39, 37);
+  -webkit-app-region: drag;
+  padding: 0 3px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+}
+
+.titlebar-button {
+  margin-left: 8px;
+  cursor: pointer;
+}
+
+#titlebar-minimize:hover{
+  background-color: #838080;
+}
+
+#titlebar-maximize:hover{
+  background-color: #838080;
+}
+
+#titlebar-close:hover{
+  background-color: red;
+}
+
+.titlebar-button img {
+  width: 25px;
+  height: 16px;
 }

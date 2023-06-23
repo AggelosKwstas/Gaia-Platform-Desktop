@@ -1,16 +1,27 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import Map from './components/Map';
 import './App.css';
-import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import AOS from "aos";
+import { appWindow } from '@tauri-apps/api/window';
+
 
 const GraphsAsset = React.lazy(() => import('./components/Graphs'));
 
 function App() {
-    useEffect(()=>{
+    useEffect(() => {
         AOS.init();
         AOS.refresh();
-    },[])
+        document
+            .getElementById('titlebar-minimize')
+            .addEventListener('click', () => appWindow.minimize());
+        document
+            .getElementById('titlebar-maximize')
+            .addEventListener('click', () => appWindow.toggleMaximize());
+        document
+            .getElementById('titlebar-close')
+            .addEventListener('click', () => appWindow.close());
+    }, [])
     return (
         <Router>
             <div className="App">
@@ -19,7 +30,7 @@ function App() {
                         path="/"
                         element={
                             <React.Suspense fallback={<>...</>}>
-                                <Map/>
+                                <Map />
                             </React.Suspense>
                         }
                     />
@@ -28,7 +39,7 @@ function App() {
                         path="/Graphs"
                         element={
                             <React.Suspense fallback={<>...</>}>
-                                <GraphsAsset/>
+                                <GraphsAsset />
                             </React.Suspense>
                         }
                     />

@@ -32,6 +32,21 @@
     <title>GAIA Platform</title>
 </head>
 <body>
+  <div data-tauri-drag-region id="title-bar">
+    <div style="position: absolute;left: 5px;">
+    <img style="width: 21px;" src="Badge Gaia Platform.png">
+    <span style="color: white;margin-left: 0.2em;">GAIA Platform</span>
+    </div>
+    <div class="titlebar-button" id="titlebar-minimize">
+      <img style="filter: invert(100%); " src="https://api.iconify.design/mdi:window-minimize.svg" alt="minimize" />
+    </div>
+    <div class="titlebar-button" id="titlebar-maximize">
+      <img style="filter: invert(100%);" src="https://api.iconify.design/mdi:window-maximize.svg" alt="maximize" />
+    </div>
+    <div class="titlebar-button" id="titlebar-close">
+      <img style="filter: invert(100%);" src="https://api.iconify.design/mdi:close.svg" alt="close" />
+    </div>
+  </div>
 <noscript>You need to enable JavaScript to run this app.</noscript>
 <div id="root"></div>
 <!--
