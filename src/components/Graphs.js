@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState,Fragment } from 'react';
 import { useLocation, useNavigate } from 'react-router-dom';
 import '../css/graphLoading.css';
 import axios from 'axios';
@@ -13,7 +13,8 @@ import ScrollToTop from "react-scroll-to-top";
 import ChartBigger from '../components/ChartBig';
 import GaugeChart from "../components/GaugeChart";
 import { convertSubscriptTagsToCharacters } from './Map';
-import '@fontsource/roboto/300.css';
+import { useAlert } from "react-alert";
+
 
 
 const TableAsset = React.lazy(() => import('../components/Table'));
@@ -234,6 +235,7 @@ const Graphs = React.memo(() => {
     }
 
     function handleReadDates(readDates, start, end) {
+        alert.success("Data retrieval complete.");
         setReadDates(readDates);
         setStartDate(start);
         setEndDate(end);
