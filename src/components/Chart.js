@@ -35,6 +35,12 @@ export default function Graph({ xValues, yValues, title, measurementUnit }) {
         title: {
             text: title,
         },
+        chart: {
+            type: 'line',
+            plotBorderWidth: 1, // Add border width for the chart plot area
+            plotBorderColor: 'white', // Specify border color for the chart plot area
+            borderRadius: 4, // Optional: Add border radius to the plot area
+          },
         series: [
             {
                 data: [],

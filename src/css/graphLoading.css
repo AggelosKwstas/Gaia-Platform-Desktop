@@ -211,11 +211,12 @@ body {
     }
 }
 
+
 .table {
     width: 100%;
     background-color: #FFFFFF;
     border-collapse: collapse;
-    /*border-color: rgb(204, 204, 204);*/
+    border-color: rgb(204, 204, 204);
 }
 
 .table td,

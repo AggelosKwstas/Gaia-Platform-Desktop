@@ -40,7 +40,11 @@ export default function Graph({ xValues, yValues, title, measurementUnit }) {
 
     const options = {
         chart: {
-            zoomType: "x"
+            zoomType: "x",
+            type: 'line',
+            plotBorderWidth: 1, // Add border width for the chart plot area
+            plotBorderColor: 'white', // Specify border color for the chart plot area
+            borderRadius: 4, // Optional: Add border radius to the plot area
         },
         colors: ['#30730e'],
         title: {
@@ -93,7 +97,7 @@ export default function Graph({ xValues, yValues, title, measurementUnit }) {
     };
 
     return (
-        <div style={{ height: '100%', width: '100%' }}>
+        <div style={{ height: '100%', width: '100%',borderRadius:'4px' }}>
             <HighchartsReact highcharts={Highcharts} options={options} ref={chartRef} />
         </div>
     );

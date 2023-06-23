@@ -8,6 +8,8 @@ import Tooltip from "react-bootstrap/Tooltip";
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
 import {faLocationDot} from "@fortawesome/free-solid-svg-icons";
 import {useNavigate} from 'react-router-dom';
+import '@fontsource/roboto/700.css';
+
 
 const LegendAsset = React.lazy(() => import('./Legend'));
 

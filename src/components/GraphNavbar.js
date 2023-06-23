@@ -13,7 +13,7 @@ import { Tooltip } from 'react-tooltip'
 export default function GraphNavbar({ start, end }) {
     return (
 
-        <MDBNavbar style={{ backgroundColor: '#292725', height: '3em' }}>
+        <MDBNavbar style={{ backgroundColor: '#292725', height: '3em',borderRadius:'4px' }}>
             <MDBContainer fluid>
                 <MDBNavbarItem className='justify-content-center d-flex w-auto'>
                     <MDBNavbarNav>

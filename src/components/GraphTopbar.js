@@ -13,7 +13,7 @@ import BatteryGauge from 'react-battery-gauge'
 export default function GraphTopbar({ transmission,battery }) {
     return (
 
-        <MDBNavbar style={{ backgroundColor: '#292725', height: '3em' }}>
+        <MDBNavbar style={{ backgroundColor: '#292725', height: '3em',borderRadius:'4px' }}>
             <MDBContainer fluid>
                 <MDBNavbarItem className='justify-content-center d-flex w-auto'>
                     <MDBNavbarNav>
