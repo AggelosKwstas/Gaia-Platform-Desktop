@@ -3830,6 +3830,12 @@ coa@^2.0.2:
     chalk "^2.4.1"
     q "^1.1.2"
 
+"code@file:../../../AppData/Roaming/npm/node_modules/code":
+  version "5.2.4"
+  resolved "file:../../../AppData/Roaming/npm/node_modules/code"
+  dependencies:
+    hoek "6.x.x"
+
 collect-v8-coverage@^1.0.0:
   version "1.0.1"
   resolved "https://registry.npmjs.org/collect-v8-coverage/-/collect-v8-coverage-1.0.1.tgz"
