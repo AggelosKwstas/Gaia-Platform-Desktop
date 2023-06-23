@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
-import * as Highcharts from 'highchartsAssets/highcharts';
+import * as Highcharts from 'highcharts-react/code/highcharts';
 import HighchartsReact from 'highcharts-react-official';
-import * as ChartModuleMore from 'highchartsAssets/highcharts-more';
-import * as HCSoldGauge from 'highchartsAssets/modules/solid-gauge';
+import * as ChartModuleMore from 'highcharts-react/code/highcharts-more';
+import * as HCSoldGauge from 'highcharts-react/code/modules/solid-gauge';
 
 ChartModuleMore(Highcharts);
 HCSoldGauge(Highcharts);

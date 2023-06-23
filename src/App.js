@@ -21,6 +21,15 @@ function App() {
         document
             .getElementById('titlebar-close')
             .addEventListener('click', () => appWindow.close());
+
+        document.addEventListener('contextmenu', event => event.preventDefault());
+
+        document.addEventListener('keydown', (e) => {
+            e = e || window.event;
+            if (e.keyCode == 116 || (e.ctrlKey && e.keyCode == 82)) {
+                e.preventDefault();
+            }
+        });
     }, [])
     return (
         <Router>
