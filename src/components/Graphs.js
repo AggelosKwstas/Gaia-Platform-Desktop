@@ -13,7 +13,6 @@ import ScrollToTop from "react-scroll-to-top";
 import ChartBigger from '../components/ChartBig';
 import GaugeChart from "../components/GaugeChart";
 import { convertSubscriptTagsToCharacters } from './Map';
-import { useAlert } from "react-alert";
 
 
 
@@ -235,7 +234,6 @@ const Graphs = React.memo(() => {
     }
 
     function handleReadDates(readDates, start, end) {
-        alert.success("Data retrieval complete.");
         setReadDates(readDates);
         setStartDate(start);
         setEndDate(end);
