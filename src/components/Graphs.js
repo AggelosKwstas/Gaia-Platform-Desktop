@@ -50,7 +50,6 @@ const Graphs = React.memo(() => {
     const [data, setData] = useState([]);
     const location = useLocation();
     const apiToken = "99f344c4-5afd-4962-a7e2-ddbc3467d4c8";
-    const [showBasic, setShowBasic] = useState(false);
     const [sensorFilter, setSensorFilter] = useState(false);
     const [size, setSize] = useState(false);
     const [arraySize, setArraySize] = useState(false);

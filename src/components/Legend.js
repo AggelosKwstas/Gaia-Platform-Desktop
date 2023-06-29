@@ -41,7 +41,6 @@ const Legend = ({mapRef, locations}) => {
     }
 
     function filterStations(filter) {
-
         let greenUrl = window.location.origin + "/static/media/GreenMarker.e39e59a10b9a686b1af9.png";
         let greyUrl = window.location.origin + '/static/media/GreyMarker.5eb815c5b986410f3e39.png';
         let redUrl = window.location.origin + '/static/media/RedMarker.0b044081b8067d93482e.png'
@@ -99,7 +98,7 @@ const Legend = ({mapRef, locations}) => {
                 for (var k = 0; k < greenArray.length; k++) {
                     greenArray[k].style.display = 'block';
                 }
-                document.getElementById('green').style.backgroundColor = '#01fb0a';
+                document.getElementById('green').style.backgroundColor = '#5caa32';
                 setGreenPressed(false);
             }
         }
@@ -175,7 +174,7 @@ const Legend = ({mapRef, locations}) => {
                     </b>
                 </h3>
                 <div className="legend-item">
-                    <span id="green" className="legend-icon" style={{background: '#01fb0a'}}
+                    <span id="green" className="legend-icon" style={{background: '#82da43'}}
                           onClick={() => filterStations('green')}></span>
                     <span><b>Good</b></span>
                 </div>

@@ -8,7 +8,7 @@ import {
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faLayerGroup} from '@fortawesome/free-solid-svg-icons';
 
-export default function GraphNavbar({start, end}) {
+export default function GraphNavbar() {
     return (
 
         <MDBNavbar style={{backgroundColor: '#292725', height: '3em',borderRadius:'4px'}}>

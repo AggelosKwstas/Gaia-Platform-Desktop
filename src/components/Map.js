@@ -1,6 +1,6 @@
 import React, {useEffect, useRef, useState} from 'react';
 import L from 'leaflet';
-import {MapContainer, Marker, Popup, TileLayer, useMap} from 'react-leaflet';
+import {MapContainer, Marker, Popup, TileLayer} from 'react-leaflet';
 import 'leaflet/dist/leaflet.css';
 import axios from 'axios';
 import '../css/LoadingScreen.css';
@@ -16,22 +16,22 @@ const LegendAsset = React.lazy(() => import('./Legend'));
 
 const greenIcon = L.icon({
     iconUrl: require('../img/GreenMarker.png'),
-    iconSize: [30, 30],
+    iconSize: [28, 35],
 });
 
 const redIcon = L.icon({
     iconUrl: require('../img/RedMarker.png'),
-    iconSize: [30, 30],
+    iconSize: [28, 35],
 });
 
 const orangeIcon = L.icon({
     iconUrl: require('../img/OrangeMarker.png'),
-    iconSize: [30, 30],
+    iconSize: [28, 35],
 });
 
 const greyIcon = L.icon({
     iconUrl: require('../img/GreyMarker.png'),
-    iconSize: [30, 30],
+    iconSize: [28, 35],
 });
 
 const renderTooltip = (props) => (
@@ -237,11 +237,8 @@ export default function Map() {
     const mapRef = useRef(null); // Declare a ref variable
 
     const handleMapLoad = () => {
-        // Access the map instance and its properties using the ref
         if (mapRef.current) {
             const mapInstance = mapRef.current;
-            // Perform actions on the mapInstance
-            // Example: mapInstance.flyTo([39.6650, 20.8537], 12);
         }
     };
 
