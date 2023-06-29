@@ -1,9 +1,9 @@
-import React, { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import Map from './components/Map';
 import './App.css';
-import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import {BrowserRouter as Router, Route, Routes} from "react-router-dom";
 import AOS from "aos";
-import { appWindow } from '@tauri-apps/api/window';
+import {appWindow} from '@tauri-apps/api/window';
 
 
 const GraphsAsset = React.lazy(() => import('./components/Graphs'));
@@ -22,14 +22,14 @@ function App() {
             .getElementById('titlebar-close')
             .addEventListener('click', () => appWindow.close());
 
-        document.addEventListener('contextmenu', event => event.preventDefault());
+        // document.addEventListener('contextmenu', event => event.preventDefault());
 
-        document.addEventListener('keydown', (e) => {
-            e = e || window.event;
-            if (e.keyCode == 116 || (e.ctrlKey && e.keyCode == 82)) {
-                e.preventDefault();
-            }
-        });
+        // document.addEventListener('keydown', (e) => {
+        //     e = e || window.event;
+        //     if (e.keyCode == 116 || (e.ctrlKey && e.keyCode == 82)) {
+        //         e.preventDefault();
+        //     }
+        // });
     }, [])
     return (
         <Router>
@@ -39,7 +39,7 @@ function App() {
                         path="/"
                         element={
                             <React.Suspense fallback={<>...</>}>
-                                <Map />
+                                <Map/>
                             </React.Suspense>
                         }
                     />
@@ -48,7 +48,7 @@ function App() {
                         path="/Graphs"
                         element={
                             <React.Suspense fallback={<>...</>}>
-                                <GraphsAsset />
+                                <GraphsAsset/>
                             </React.Suspense>
                         }
                     />

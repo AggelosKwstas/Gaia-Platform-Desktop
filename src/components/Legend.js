@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, {useState, useEffect} from 'react';
 import '../css/Legend.css';
 import '../css/Table.css';
 import "aos/dist/aos.css";
@@ -14,16 +14,15 @@ import twitter from "../img/twitter.png";
 import pinterest from "../img/pinterest.png";
 import CustomTooltip from './CustomTooltip';
 import '../css/InfoButton.css';
-import { Autocomplete, TextField } from "@mui/material";
+import {Autocomplete, TextField} from "@mui/material";
 
-const Legend = ({ mapRef, locations }) => {
+const Legend = ({mapRef, locations}) => {
     const [show, setShow] = useState(false);
     const [greenPressed, setGreenPressed] = useState(false);
     const [yellowPressed, setYellowPressed] = useState(false);
     const [redPressed, setRedPressed] = useState(false);
     const [grayPressed, setGrayPressed] = useState(false);
     const [valuesFilter, setValuesFilter] = useState([]);
-    const [values, setValues] = useState(['Γαρδίκι', 'Ελεούσα', 'Άγιος Ιωάννης']);
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -43,10 +42,10 @@ const Legend = ({ mapRef, locations }) => {
 
     function filterStations(filter) {
 
-        let greenUrl = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAlCAYAAAAjt+tHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB6ElEQVRYhe2XsWrjQBBAn4UxQoQULq406kN0HIeLcK39Q/ch90OqgwsTwi2kN/4AF8EsixDSFZ7xrY1kSUEiKTQwrOUVek+rWaGZlGUJwHq9ngIBMJNxSr+RAwWQAUWapjnApCxLhc+AUHImAkFP8EIEMsBJZmma5pPVaqXwCLiXMWSYFXCABd5lzPQuQ4F/M0uz6Rl8Eck2eZKfBZD7Sx+ZpdnEcUwURYRh2CvYOYe1FoPZJNvkEXkMfuGFwCBw4PqaWmeBVrvmIPAKiTNTC62y2vf7fS/gxWJR9XegJjfj7fdb7dzDn4fW59RFX/v8wzEKjAKfLtC4DZu2Udtz6uLrr8D4IhoFRoGh49NfRCpQVE3WfMn0FQWcHkHuJc65wYjetc/MgP/tkgOw1g4ioZ/leijMYurBbbJNngzVjUkcx8zn81aww+HAbrernJPGxOL1BYUcvMsJj1y2ZgGAwTwDjRIKT7bJL/lL6+u6NXNA0aY5PX/Dm6V5ubUSHvwnl7VV35w2tOc6+u3ba5WEB//hL/GVQHV7fitELATuJCOzNH99CQ/+XeBHSaegumgUqJG405UA/Ds/0gHeWqBC4l4kXgB95kdOxdUa3kngSiKSnMlUxmnpbRd4ZwFPQotSt6pusawLHOAfnpcLWC/XAGMAAAAASUVORK5CYII=";
-        let greyUrl = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAlCAQAAACJviPMAAAABGdBTUEAALGPC/xhBQAAACBjSFJNAAB6JgAAgIQAAPoAAACA6AAAdTAAAOpgAAA6mAAAF3CculE8AAAAAmJLR0QA/4ePzL8AAAAHdElNRQfmBgIIFCrShiAvAAAAAW9yTlQBz6J3mgAAATxJREFUSMftlctqwzAQRY+GQQgRsuxvlNBV6MfZ/riSVSn9lWKEEELuIs7DsU2dNF0UMsuBc+cJ1wCgCBZBWRaZQqKQQQHF4nBYFFmAFzKJSASyolg8a7xxyzvoIoGvQ/OOtXmqdgvhPpptB4UsWBz+WhyqHR6HFQRr3LU4gHFYRFB08ezDUBQVWLT56RDGtavhqiYzFxq/i4fAHQRGZ2z4OfO3HTwe6T8K3OWRys3lCwiZTL4Jz2SyUEhdvIXvIokiJCKh2V6LN1sCkWRG1iZQvc1Ar/3GDtYWSIZLc1XUaPU+gb90+32dzDWRDXBu79LL+fpjiNebfcu9wNHezaiQ4lixwtefZ/gzgZaWeHmx8SdmIi0tod4Mqk/i0698lGhe9rPP41MjnAbxeCyQCIRpfF7gcBvtO0pz3/oNbbl+rnFD6LAAAAAldEVYdGRhdGU6Y3JlYXRlADIwMjItMDYtMDJUMDg6MjA6NDIrMDA6MDApCvR9AAAAJXRFWHRkYXRlOm1vZGlmeQAyMDIyLTA2LTAyVDA4OjIwOjQyKzAwOjAwWFdMwQAAAABJRU5ErkJggg==";
-        let redUrl = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAlCAYAAAAjt+tHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB+ElEQVRYhe2XQWrbQBRAn4QjhGNCiaFLkwuEUroopdvxfXQU30ezLaGLUEouELwsOJTgGDEWUhf6350YyZKKRLrwh2FsSei9Gf0Z5gdlWQKwXC4nQAhE0k8YNnKgABxQpGmaAwRlWSo8AmJpkQiEA8ELEXBAJs2laZoHxhiFT4Er6WPGmYEM2AHP0jsdZSzw94m1dwODX8XKmC/yswDywBgzE/h1Yu3DzXzONIqILy4GBWf7PTvneNxsWBlzCzwBz37ixcAocOD4nZpnoWa7tlHgNRIHpiZabbav1+tBwIvFou5yqCYn47PsE3XxPQg6P9MUQ63zf46zwFngzQVal2HbMur6TFP8/zNw3ojOAmeBsePNNyIVKOpuNpxkhooCqk+Qe41svx+N6L37wAz5Wy5lADvnRpHQY7n+FWYRGGMiYAa840RhcjOfc3152Qn29PLC42ZTe08Kk1/Ab2A7oZqBjKpc0qLBL81CgMTab0CrhMJXxnyVS5pfx6VZBhRditPDGT6x9v7UTHjwT7zOrebitKU8117lpom1P+okPPhHGaV+Z1+gvjw/FSIWU+XJTCR++hIe/IPAt9IyBTVFq0CDxExnAvBHvqUHvLNAjcSVSNwD+s23VMnVGd5L4EhiKi2SW45q6nd94L0FPAlNSl2qusRcHzjAHy24CRxikYUrAAAAAElFTkSuQmCC";
-        let orangeUrl = "data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACAAAAAlCAYAAAAjt+tHAAAACXBIWXMAAAsTAAALEwEAmpwYAAAB6UlEQVRYhe2XMWukQBTHfyuLiIQUKa4MW14TDrkqpHW/0rWy7X0lbY+tglx3ZcgHSBEWGUTGFPve3uwyrgpKUviHx6gj/n/zfMq8Vdu2AGy32zUQAKGMa6ZVA1igBmye5w3Aqm1bNQ+BSCIUgGAicysANWAk6jzPm1WapmoeA7cyRsyTAQNUwLuMta4yEvNvWVLsJzY+065MH+XQAo2b+jhLiv1mExLHAVE0VfaPMsZSVZaMYr8r0wfkNbiFFwGzmAOXz9Q6C7TaNWYx90CcPLXQvK6vr9Ukxvf3se9yoCRX9f1X2zn37/dq8D1dmi/fA7UALACfDtD7GfZ9RkPv6dLXz8DyI1oAFoC59ek/IgWwvsmOncxUsnB8BY0TGONlmUTOs0+eAf/bJQNQVXYWCN2W66l42rVjXu3K9DHD35hsNiF3d8Oapbe3hpeX2jsnjUmF0xdYOXmXGx44b80CgIziD9ALoea7Mn2SS7rsy9bMAHZIc3raw2dJ8XwtE475T85rq7s57WnPdXTbt9IH4ZgnboovAPzt+TUJWATcSMRZUvx1IRzzH2J+kDBq1KVegA6IG80E4K78wAjzwQAeiFuBeAb0nR84Ftdg81EAFxCxRChTNcfUV2PMRwM4EFqUWon6idVjzAE+AMsEDcHzoY2PAAAAAElFTkSuQmCC";
+        let greenUrl = process.env.PUBLIC_URL + "/static/media/GreenMarker.e39e59a10b9a686b1af9.png";
+        let greyUrl = window.location.origin + '/static/media/GreyMarker.5eb815c5b986410f3e39.png';
+        let redUrl = window.location.origin + '/static/media/RedMarker.0b044081b8067d93482e.png'
+        let orangeUrl = window.location.origin + '/static/media/OrangeMarker.3ba4eff75e8e363d705b.png';
 
         let greyArray = [];
         let greenArray = [];
@@ -168,42 +167,43 @@ const Legend = ({ mapRef, locations }) => {
 
     return (
         <div>
-            <div className="legend" data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000" style={{marginTop:'30px'}}>
-                <h3 style={{ marginBottom: '10px', fontSize: '23px', cursor: 'help' }}>
+            <div className="legend" data-aos="fade-right" data-aos-delay="50" data-aos-duration="1000"
+                 style={{marginTop: '30px'}}>
+                <h3 style={{marginBottom: '10px', fontSize: '23px', cursor: 'help'}}>
                     <b>
-                        <CustomTooltip />
+                        <CustomTooltip/>
                     </b>
                 </h3>
                 <div className="legend-item">
-                    <span id="green" className="legend-icon" style={{ background: '#01fb0a' }}
-                        onClick={() => filterStations('green')}></span>
+                    <span id="green" className="legend-icon" style={{background: '#01fb0a'}}
+                          onClick={() => filterStations('green')}></span>
                     <span><b>Good</b></span>
                 </div>
                 <div className="legend-item">
-                    <span id="orange" className="legend-icon" style={{ background: "#FFA500" }}
-                        onClick={() => filterStations('orange')}></span>
+                    <span id="orange" className="legend-icon" style={{background: "#FFA500"}}
+                          onClick={() => filterStations('orange')}></span>
                     <span><b>Fair</b></span>
                 </div>
                 <div className="legend-item">
-                    <span id="red" className="legend-icon" style={{ background: '#ff0032' }}
-                        onClick={() => filterStations('bad')}></span>
+                    <span id="red" className="legend-icon" style={{background: '#ff0032'}}
+                          onClick={() => filterStations('bad')}></span>
                     <span><b>Bad</b></span>
                 </div>
                 <div className="legend-item">
-                    <span id="grey" className="legend-icon" style={{ background: '#9b9a9a' }}
-                        onClick={() => filterStations('grey')}></span>
+                    <span id="grey" className="legend-icon" style={{background: '#9b9a9a'}}
+                          onClick={() => filterStations('grey')}></span>
                     <span><b>No Data</b></span>
                 </div>
-                <input className="button" type="button" value="Learn more" style={{ fontSize: '18px', width: '135px' }}
-                    onClick={handleShow} />
+                <input className="button" type="button" value="Learn more" style={{fontSize: '18px', width: '135px'}}
+                       onClick={handleShow}/>
                 <div className="pt-3">
                     <Autocomplete
                         disablePortal
                         id="combo-box-demo"
                         options={valuesFilter}
                         onChange={handleAutocompleteChange}
-                        sx={{ width: '170px', height: 'auto', borderColor: 'black' }}
-                        renderInput={(params) => <TextField {...params} label="Station Navigator" />}
+                        sx={{width: '170px', height: 'auto', borderColor: 'black'}}
+                        renderInput={(params) => <TextField {...params} label="Station Navigator"/>}
                     />
                 </div>
             </div>
@@ -215,20 +215,20 @@ const Legend = ({ mapRef, locations }) => {
                 <Modal.Header closeButton>
                     <Modal.Title data-aos="zoom-in" data-aos-delay="50" data-aos-duration="1000"
                     >
-                        <img style={{ width: '150px', marginRight: 0 }} src={logo} alt="Logo" />
+                        <img style={{width: '150px', marginRight: 0}} src={logo} alt="Logo"/>
                     </Modal.Title>
                 </Modal.Header>
                 <Modal.Body data-aos="fade-down" data-aos-duration="1200"
-                    className="custom-modal-body">
+                            className="custom-modal-body">
                     <div className="text-md-center"><h3><b>
                         What we offer?
                     </b>
                     </h3>
                     </div>
                     <div className="grid-container">
-                        <div className="card" style={{ borderRadius: '15px' }}>
-                            <div style={{ textAlign: 'center' }}>
-                                <img style={{ width: '70px', marginRight: 0 }} src={air} alt="Logo" />
+                        <div className="card" style={{borderRadius: '15px'}}>
+                            <div style={{textAlign: 'center'}}>
+                                <img style={{width: '70px', marginRight: 0}} src={air} alt="Logo"/>
                                 <div className="container">
                                     <h4><b>Air quality and pollution</b></h4>
                                     <p>Our platform utilizes advanced sensors to accurately measure air quality and
@@ -237,9 +237,9 @@ const Legend = ({ mapRef, locations }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="card" style={{ borderRadius: '15px' }}>
-                            <div style={{ textAlign: 'center' }}>
-                                <img style={{ width: '70px', marginRight: 0 }} src={noise} alt="Logo" />
+                        <div className="card" style={{borderRadius: '15px'}}>
+                            <div style={{textAlign: 'center'}}>
+                                <img style={{width: '70px', marginRight: 0}} src={noise} alt="Logo"/>
                                 <div className="container">
                                     <h4><b>Acoustic and noise levels</b></h4>
                                     <p>By continuously monitoring noise levels in different areas, we aim to raise
@@ -249,9 +249,9 @@ const Legend = ({ mapRef, locations }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="card" style={{ borderRadius: '15px' }}>
-                            <div style={{ textAlign: 'center' }}>
-                                <img style={{ width: '70px', marginRight: 0 }} src={plant} alt="Logo" />
+                        <div className="card" style={{borderRadius: '15px'}}>
+                            <div style={{textAlign: 'center'}}>
+                                <img style={{width: '70px', marginRight: 0}} src={plant} alt="Logo"/>
                                 <div className="container">
                                     <h4><b>Parks and gardens</b></h4>
                                     <p> By understanding water usage patterns and gaining insights into their
@@ -261,9 +261,9 @@ const Legend = ({ mapRef, locations }) => {
                                 </div>
                             </div>
                         </div>
-                        <div className="card" style={{ borderRadius: '15px' }}>
-                            <div style={{ textAlign: 'center' }}>
-                                <img style={{ width: '70px', marginRight: 0 }} src={town} alt="Logo" />
+                        <div className="card" style={{borderRadius: '15px'}}>
+                            <div style={{textAlign: 'center'}}>
+                                <img style={{width: '70px', marginRight: 0}} src={town} alt="Logo"/>
                                 <div className="container">
                                     <h4><b>Cities and towns management</b></h4>
                                     <p> We provide
@@ -308,111 +308,111 @@ const Legend = ({ mapRef, locations }) => {
                     </b></h5>
                     <table className="responsive-table">
                         <thead className="responsive-table__head">
-                            <tr className="responsive-table__row">
-                                <th className="responsive-table__head__title responsive-table__head__title--name">
-                                    Pollutants
-                                </th>
-                                <th className="responsive-table__head__title responsive-table__head__title--status">Good</th>
-                                <th className="responsive-table__head__title responsive-table__head__title--types go_right">Fair</th>
-                                <th className="responsive-table__head__title responsive-table__head__title--update go_right">Bad
-                                </th>
-                                <th className="responsive-table__head__title responsive-table__head__title--update">No
-                                    data
-                                </th>
+                        <tr className="responsive-table__row">
+                            <th className="responsive-table__head__title responsive-table__head__title--name">
+                                Pollutants
+                            </th>
+                            <th className="responsive-table__head__title responsive-table__head__title--status">Good</th>
+                            <th className="responsive-table__head__title responsive-table__head__title--types go_right">Fair</th>
+                            <th className="responsive-table__head__title responsive-table__head__title--update go_right">Bad
+                            </th>
+                            <th className="responsive-table__head__title responsive-table__head__title--update">No
+                                data
+                            </th>
 
-                            </tr>
+                        </tr>
                         </thead>
                         <tbody className="responsive-table__body">
-                            <tr className="responsive-table__row">
-                                <td className="responsive-table__body__text responsive-table__body__text--name">
-                                    O3 (ppm)
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status">
-                                    <span className="status-indicator status-indicator--active"></span>≤0.04
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--new"></span> 0.04-0.2
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--bad"></span>≥0.2
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--inactive"></span>NULL
-                                </td>
-                            </tr>
-                            <tr className="responsive-table__row">
-                                <td className="responsive-table__body__text responsive-table__body__text--name">
-                                    PM 2.5 (μg/m3)
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status">
-                                    <span className="status-indicator status-indicator--active"></span>≤25
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--new"></span>25-100
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--bad"></span>≥100
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--inactive"></span>NULL
-                                </td>
-                            </tr>
-                            <tr className="responsive-table__row">
-                                <td className="responsive-table__body__text responsive-table__body__text--name">
-                                    PM 10 (μg/m3)
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--active"></span>≤50
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--new"></span>50-200
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--bad"></span>≥200
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--inactive"></span>NULL
-                                </td>
-                            </tr>
-                            <tr className="responsive-table__row">
-                                <td className="responsive-table__body__text responsive-table__body__text--name">
-                                    SO2 (ppm)
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--active"></span>≤0.1
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--new"></span>0.1-0.3
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--bad"></span>≥0.3
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--inactive"></span>NULL
-                                </td>
-                            </tr>
-                            <tr className="responsive-table__row">
-                                <td className="responsive-table__body__text responsive-table__body__text--name">
-                                    NO2 (ppm)
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--active"></span>≤0.1
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--new"></span>0.1-0.2
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--bad"></span>≥0.2
-                                </td>
-                                <td className="responsive-table__body__text responsive-table__body__text--status"><span
-                                    className="status-indicator status-indicator--inactive"></span>NULL
-                                </td>
-                            </tr>
+                        <tr className="responsive-table__row">
+                            <td className="responsive-table__body__text responsive-table__body__text--name">
+                                O3 (ppm)
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status">
+                                <span className="status-indicator status-indicator--active"></span>≤0.04
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--new"></span> 0.04-0.2
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--bad"></span>≥0.2
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--inactive"></span>NULL
+                            </td>
+                        </tr>
+                        <tr className="responsive-table__row">
+                            <td className="responsive-table__body__text responsive-table__body__text--name">
+                                PM 2.5 (μg/m3)
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status">
+                                <span className="status-indicator status-indicator--active"></span>≤25
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--new"></span>25-100
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--bad"></span>≥100
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--inactive"></span>NULL
+                            </td>
+                        </tr>
+                        <tr className="responsive-table__row">
+                            <td className="responsive-table__body__text responsive-table__body__text--name">
+                                PM 10 (μg/m3)
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--active"></span>≤50
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--new"></span>50-200
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--bad"></span>≥200
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--inactive"></span>NULL
+                            </td>
+                        </tr>
+                        <tr className="responsive-table__row">
+                            <td className="responsive-table__body__text responsive-table__body__text--name">
+                                SO2 (ppm)
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--active"></span>≤0.1
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--new"></span>0.1-0.3
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--bad"></span>≥0.3
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--inactive"></span>NULL
+                            </td>
+                        </tr>
+                        <tr className="responsive-table__row">
+                            <td className="responsive-table__body__text responsive-table__body__text--name">
+                                NO2 (ppm)
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--active"></span>≤0.1
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--new"></span>0.1-0.2
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--bad"></span>≥0.2
+                            </td>
+                            <td className="responsive-table__body__text responsive-table__body__text--status"><span
+                                className="status-indicator status-indicator--inactive"></span>NULL
+                            </td>
+                        </tr>
                         </tbody>
                     </table>
                 </Modal.Body>
                 <Modal.Footer>
-                    <div className="text-left"><h6 style={{ marginLeft: '7px' }}> © 2022 | <a
+                    <div className="text-left"><h6 style={{marginLeft: '7px'}}> © 2022 | <a
                         href="https://www.neuronenergy.com/"
                         onClick={(e) => {
                             e.preventDefault();
@@ -422,30 +422,32 @@ const Legend = ({ mapRef, locations }) => {
                         Neuron Energy Solutions
                     </a>. All
                         rights reserved.</h6></div>
-                    <div style={{ float: 'right' }}>
-                        <a href="https://www.linkedin.com/company/neuron-energy-solutions/about/" target="_blank" onClick={(e) => {
-                            e.preventDefault();
-                            openLinkInNewWindow('https://www.linkedin.com/company/neuron-energy-solutions/about/');
-                        }}>
-                            <img className="footer-icons" src={linkedin} alt="Logo" />
+                    <div style={{float: 'right'}}>
+                        <a href="https://www.linkedin.com/company/neuron-energy-solutions/about/" target="_blank"
+                           onClick={(e) => {
+                               e.preventDefault();
+                               openLinkInNewWindow('https://www.linkedin.com/company/neuron-energy-solutions/about/');
+                           }}>
+                            <img className="footer-icons" src={linkedin} alt="Logo"/>
                         </a>
-                        <a href="https://www.facebook.com/profile.php?id=100051469122856" target="_blank" onClick={(e) => {
-                            e.preventDefault();
-                            openLinkInNewWindow('https://www.facebook.com/profile.php?id=100051469122856');
-                        }}>
-                            <img className="footer-icons" src={facebook} alt="Facebook" />
+                        <a href="https://www.facebook.com/profile.php?id=100051469122856" target="_blank"
+                           onClick={(e) => {
+                               e.preventDefault();
+                               openLinkInNewWindow('https://www.facebook.com/profile.php?id=100051469122856');
+                           }}>
+                            <img className="footer-icons" src={facebook} alt="Facebook"/>
                         </a>
                         <a href="https://twitter.com/SolarEye_PV" target="_blank" onClick={(e) => {
                             e.preventDefault();
                             openLinkInNewWindow('https://twitter.com/SolarEye_PV');
                         }}>
-                            <img className="footer-icons" src={twitter} alt="Twitter" />
+                            <img className="footer-icons" src={twitter} alt="Twitter"/>
                         </a>
                         <a href="https://gr.pinterest.com/solareye/" target="_blank" onClick={(e) => {
                             e.preventDefault();
                             openLinkInNewWindow('https://gr.pinterest.com/solareye/');
                         }}>
-                            <img className="footer-icons" src={pinterest} alt="Pinterest" />
+                            <img className="footer-icons" src={pinterest} alt="Pinterest"/>
                         </a>
                     </div>
                 </Modal.Footer>

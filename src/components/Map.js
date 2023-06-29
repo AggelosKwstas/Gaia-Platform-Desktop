@@ -16,22 +16,22 @@ const LegendAsset = React.lazy(() => import('./Legend'));
 
 const greenIcon = L.icon({
     iconUrl: require('../img/GreenMarker.png'),
-    iconSize: [24, 30],
+    iconSize: [30, 30],
 });
 
 const redIcon = L.icon({
     iconUrl: require('../img/RedMarker.png'),
-    iconSize: [24, 30],
+    iconSize: [30, 30],
 });
 
 const orangeIcon = L.icon({
     iconUrl: require('../img/OrangeMarker.png'),
-    iconSize: [24, 30],
+    iconSize: [30, 30],
 });
 
 const greyIcon = L.icon({
     iconUrl: require('../img/GreyMarker.png'),
-    iconSize: [24, 30],
+    iconSize: [30, 30],
 });
 
 const renderTooltip = (props) => (
