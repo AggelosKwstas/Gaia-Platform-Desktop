@@ -42,7 +42,7 @@ const Legend = ({mapRef, locations}) => {
 
     function filterStations(filter) {
 
-        let greenUrl = process.env.PUBLIC_URL + "/static/media/GreenMarker.e39e59a10b9a686b1af9.png";
+        let greenUrl = window.location.origin + "/static/media/GreenMarker.e39e59a10b9a686b1af9.png";
         let greyUrl = window.location.origin + '/static/media/GreyMarker.5eb815c5b986410f3e39.png';
         let redUrl = window.location.origin + '/static/media/RedMarker.0b044081b8067d93482e.png'
         let orangeUrl = window.location.origin + '/static/media/OrangeMarker.3ba4eff75e8e363d705b.png';
