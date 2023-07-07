@@ -22,7 +22,7 @@ function App() {
             .getElementById('titlebar-close')
             .addEventListener('click', () => appWindow.close());
 
-        document.addEventListener('contextmenu', event => event.preventDefault());
+        // document.addEventListener('contextmenu', event => event.preventDefault());
 
         document.addEventListener('keydown', (e) => {
             e = e || window.event;
