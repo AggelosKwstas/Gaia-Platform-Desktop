@@ -9,6 +9,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import "@fontsource/roboto/700.css";
+import uoiPng from  '../img/sensor_default.jpg';
+import gardikiPng from '../img/gardikiSensor.jpg';
+import ioannisPng from '../img/agiosIoannisSensor.jpg';
+import eleousaPng from '../img/eleousaSensor.jpg';
 
 const LegendAsset = React.lazy(() => import("./Legend"));
 
@@ -342,7 +346,6 @@ export default function Map() {
         console.log(filteredSensorData[2][0]);
         console.log(filteredSensorData[1][0]);
 
-
         setFound((prevFound) => [...prevFound, ...nullIndices]);
         setSensorData(filteredSensorData);
         setIsLoading4(false);
@@ -414,6 +417,13 @@ export default function Map() {
                   </b>
                 </h6>
                 <div style={{ textAlign: "center" }}>
+                <img
+                    style={{
+                      display: "block",
+                    }}
+                    src={uoiPng}
+                    alt="UOI"
+                  />
                   Status: <b style={{ color: "#bb2124" }}>Inactive</b>
                 </div>
                 <div style={{ textAlign: "center", fontSize: "15px" }}>
@@ -443,14 +453,47 @@ export default function Map() {
                   </b>
                 </h6>
                 <div style={{ textAlign: "center" }}>
-                  Status: <b style={{ color: "#22bb33" }}>Active</b>
+                {index===1 && (
+                  <img
+                  style={{
+                    display: "block",
+                      margin: "0 auto 10px auto",
+                      width: "130px",
+                  }}
+                  src={gardikiPng}
+                  alt="Gardiki"
+                />
+                )}
+                  {index===2 && (
+                  <img
+                  style={{
+                    display: "block",
+                      margin: "0 auto 10px auto",
+                      width: "130px",
+                  }}
+                  src={ioannisPng}
+                  alt="Gardiki"
+                />
+                )}
+                  {index===3 && (
+                  <img
+                  style={{
+                    display: "block",
+                      margin: "0 auto 10px auto",
+                      width: "130px",
+                  }}
+                  src={eleousaPng}
+                  alt="Gardiki"
+                />
+                )}
+                  <b>Status: </b><b style={{ color: "#22bb33" }}>Active</b>
                 </div>
                 {apiIcon && (
                   <img
                     style={{
                       display: "block",
                       margin: "0 auto",
-                      width: "70px",
+                      width: "85px",
                     }}
                     src={`http://openweathermap.org/img/w/${apiIcon}.png`}
                     alt="Weather"
@@ -464,7 +507,13 @@ export default function Map() {
                         <div>
                           Today at{" "}
                           {new Date(
-                            sensorData[index][ind][coordinate["sensor_node_id"] + "_measurements"][sensorData[index][ind][coordinate["sensor_node_id"] + "_measurements"].length-1]["timestamp"]
+                            sensorData[index][ind][
+                              coordinate["sensor_node_id"] + "_measurements"
+                            ][
+                              sensorData[index][ind][
+                                coordinate["sensor_node_id"] + "_measurements"
+                              ].length - 1
+                            ]["timestamp"]
                           )
                             .toLocaleTimeString([], {
                               hour: "2-digit",
@@ -527,7 +576,13 @@ export default function Map() {
                         </div>
                         <div className="column">
                           <div className="value-container">
-                            <div>{sensorData[index][ind]["value"]}</div>
+                            <div>{  sensorData[index][ind][
+                              coordinate["sensor_node_id"] + "_measurements"
+                            ][
+                              sensorData[index][ind][
+                                coordinate["sensor_node_id"] + "_measurements"
+                              ].length - 1
+                            ]["value"]}</div>
                             <div>
                               &nbsp;{convertDegreesCToSymbol(type.unit)}
                             </div>
@@ -549,7 +604,13 @@ export default function Map() {
                         </div>
                         <div className="column">
                           <div className="value-container">
-                            <div>{sensorData[index][ind]["value"]}</div>
+                            <div>{  sensorData[index][ind][
+                              coordinate["sensor_node_id"] + "_measurements"
+                            ][
+                              sensorData[index][ind][
+                                coordinate["sensor_node_id"] + "_measurements"
+                              ].length - 1
+                            ]["value"]}</div>
                             <div>
                               &nbsp;{convertDegreesCToSymbol(type.unit)}
                             </div>
