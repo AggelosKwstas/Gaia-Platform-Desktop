@@ -9,10 +9,10 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import { useNavigate } from "react-router-dom";
 import "@fontsource/roboto/700.css";
-import uoiPng from  '../img/sensor_default.jpg';
-import gardikiPng from '../img/gardikiSensor.jpg';
-import ioannisPng from '../img/agiosIoannisSensor.jpg';
-import eleousaPng from '../img/eleousaSensor.jpg';
+import uoiPng from "../img/sensor_default.jpg";
+import gardikiPng from "../img/gardikiSensor.jpg";
+import ioannisPng from "../img/agiosIoannisSensor.jpg";
+import eleousaPng from "../img/eleousaSensor.jpg";
 
 const LegendAsset = React.lazy(() => import("./Legend"));
 
@@ -114,44 +114,56 @@ function checkQuality(arr, array, position, data) {
   }
 
   relevantIndices.forEach((index) => {
-    const value = 0;
+    let measurements = data[position][index];
+
+    let sum = 0;
+    let count = 0;
+
+    measurements[array.sensor_node_id + "_measurements"].forEach((item) => {
+      sum += item.value;
+      count++;
+    });
+
+    const average = count > 0 ? sum / count : 0;
+
+    const value = average;
 
     if (index === 0) {
-      if (value >= 0.04 && value <= 0.2) {
+      if (value >= 100 && value <= 240) {
         fair_o3 = true;
-      } else if (value >= 0.2) {
+      } else if (value >= 240) {
         bad_o3 = true;
       }
     }
 
     if (index === 5) {
-      if (value >= 25 && value <= 100) {
+      if (value >= 20 && value <= 50) {
         fair_pm2 = true;
-      } else if (value >= 100) {
+      } else if (value >= 50) {
         bad_pm2 = true;
       }
     }
 
     if (index === 6) {
-      if (value >= 50 && value <= 200) {
+      if (value >= 40 && value <= 100) {
         fair_pm1 = true;
-      } else if (value >= 200) {
+      } else if (value >= 100) {
         bad_pm1 = true;
       }
     }
 
     if (index === 7) {
-      if (value >= 0.1 && value <= 0.3) {
+      if (value >= 100 && value <= 200) {
         fair_so2 = true;
-      } else if (value >= 0.3) {
+      } else if (value >= 200) {
         bad_so2 = true;
       }
     }
 
     if (index === 9) {
-      if (value >= 0.1 && value <= 0.2) {
+      if (value >= 90 && value <= 230) {
         fair_no2 = true;
-      } else if (value >= 0.2) {
+      } else if (value >= 230) {
         bad_no2 = true;
       }
     }
@@ -342,10 +354,6 @@ export default function Map() {
           }
         });
 
-        //index , ind , measurement , size - 1, timestamp
-        console.log(filteredSensorData[2][0]);
-        console.log(filteredSensorData[1][0]);
-
         setFound((prevFound) => [...prevFound, ...nullIndices]);
         setSensorData(filteredSensorData);
         setIsLoading4(false);
@@ -417,7 +425,7 @@ export default function Map() {
                   </b>
                 </h6>
                 <div style={{ textAlign: "center" }}>
-                <img
+                  <img
                     style={{
                       display: "block",
                     }}
@@ -453,40 +461,41 @@ export default function Map() {
                   </b>
                 </h6>
                 <div style={{ textAlign: "center" }}>
-                {index===1 && (
-                  <img
-                  style={{
-                    display: "block",
-                      margin: "0 auto 10px auto",
-                      width: "130px",
-                  }}
-                  src={gardikiPng}
-                  alt="Gardiki"
-                />
-                )}
-                  {index===2 && (
-                  <img
-                  style={{
-                    display: "block",
-                      margin: "0 auto 10px auto",
-                      width: "130px",
-                  }}
-                  src={ioannisPng}
-                  alt="Gardiki"
-                />
-                )}
-                  {index===3 && (
-                  <img
-                  style={{
-                    display: "block",
-                      margin: "0 auto 10px auto",
-                      width: "130px",
-                  }}
-                  src={eleousaPng}
-                  alt="Gardiki"
-                />
-                )}
-                  <b>Status: </b><b style={{ color: "#22bb33" }}>Active</b>
+                  {index === 1 && (
+                    <img
+                      style={{
+                        display: "block",
+                        margin: "0 auto 10px auto",
+                        width: "130px",
+                      }}
+                      src={gardikiPng}
+                      alt="Gardiki"
+                    />
+                  )}
+                  {index === 2 && (
+                    <img
+                      style={{
+                        display: "block",
+                        margin: "0 auto 10px auto",
+                        width: "130px",
+                      }}
+                      src={ioannisPng}
+                      alt="Gardiki"
+                    />
+                  )}
+                  {index === 3 && (
+                    <img
+                      style={{
+                        display: "block",
+                        margin: "0 auto 10px auto",
+                        width: "130px",
+                      }}
+                      src={eleousaPng}
+                      alt="Gardiki"
+                    />
+                  )}
+                  <b>Status: </b>
+                  <b style={{ color: "#22bb33" }}>Active</b>
                 </div>
                 {apiIcon && (
                   <img
@@ -576,13 +585,18 @@ export default function Map() {
                         </div>
                         <div className="column">
                           <div className="value-container">
-                            <div>{  sensorData[index][ind][
-                              coordinate["sensor_node_id"] + "_measurements"
-                            ][
-                              sensorData[index][ind][
-                                coordinate["sensor_node_id"] + "_measurements"
-                              ].length - 1
-                            ]["value"]}</div>
+                            <div>
+                              {
+                                sensorData[index][ind][
+                                  coordinate["sensor_node_id"] + "_measurements"
+                                ][
+                                  sensorData[index][ind][
+                                    coordinate["sensor_node_id"] +
+                                      "_measurements"
+                                  ].length - 1
+                                ]["value"]
+                              }
+                            </div>
                             <div>
                               &nbsp;{convertDegreesCToSymbol(type.unit)}
                             </div>
@@ -604,13 +618,18 @@ export default function Map() {
                         </div>
                         <div className="column">
                           <div className="value-container">
-                            <div>{  sensorData[index][ind][
-                              coordinate["sensor_node_id"] + "_measurements"
-                            ][
-                              sensorData[index][ind][
-                                coordinate["sensor_node_id"] + "_measurements"
-                              ].length - 1
-                            ]["value"]}</div>
+                            <div>
+                              {
+                                sensorData[index][ind][
+                                  coordinate["sensor_node_id"] + "_measurements"
+                                ][
+                                  sensorData[index][ind][
+                                    coordinate["sensor_node_id"] +
+                                      "_measurements"
+                                  ].length - 1
+                                ]["value"]
+                              }
+                            </div>
                             <div>
                               &nbsp;{convertDegreesCToSymbol(type.unit)}
                             </div>
