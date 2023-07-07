@@ -411,6 +411,7 @@ export default function Map() {
           >
             {checkNullStation(found, index) && (
               <Popup>
+                <div>
                 <h6 style={{ textAlign: "center" }}>
                   <FontAwesomeIcon
                     icon={faLocationDot}
@@ -428,6 +429,7 @@ export default function Map() {
                   <img
                     style={{
                       display: "block",
+                      margin:'auto'
                     }}
                     src={uoiPng}
                     alt="UOI"
@@ -442,18 +444,21 @@ export default function Map() {
                     <b>maintenance</b>
                   </div>
                 </div>
+                </div>
               </Popup>
             )}
 
             {!checkNullStation(found, index) && (
               <Popup>
+                <div style={{fontSize:'15px'}}>
                 <h6 style={{ textAlign: "center" }}>
                   <FontAwesomeIcon
                     icon={faLocationDot}
                     className="bounce-animation"
+                    style={{fontSize:'20px'}}
                   />
                   &nbsp;&nbsp;
-                  <b>
+                  <b style={{fontSize:'20px'}}>
                     {stations["tbl_sensor_node"][index]["description"].replace(
                       "Air Monitor",
                       ""
@@ -466,7 +471,7 @@ export default function Map() {
                       style={{
                         display: "block",
                         margin: "0 auto 10px auto",
-                        width: "130px",
+                        width: "170px",
                       }}
                       src={gardikiPng}
                       alt="Gardiki"
@@ -477,7 +482,7 @@ export default function Map() {
                       style={{
                         display: "block",
                         margin: "0 auto 10px auto",
-                        width: "130px",
+                        width: "170px",
                       }}
                       src={ioannisPng}
                       alt="Gardiki"
@@ -488,7 +493,7 @@ export default function Map() {
                       style={{
                         display: "block",
                         margin: "0 auto 10px auto",
-                        width: "130px",
+                        width: "170px",
                       }}
                       src={eleousaPng}
                       alt="Gardiki"
@@ -655,6 +660,7 @@ export default function Map() {
                   >
                     View station
                   </button>
+                </div>
                 </div>
               </Popup>
             )}

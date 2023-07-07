@@ -7,7 +7,7 @@
     outline: none;
     color: white;
     font-family: 'Montserrat', sans-serif;
-    font-size: 16px;
+    font-size: 18px;
     border-radius: 3px;
     box-shadow: 0 2px 0px #5caa32; /* Updated box shadow */
     border-bottom: 2px solid #4e8f29; /* Updated border color */
@@ -29,7 +29,7 @@
 .map_components .row {
     display: grid;
     grid-template-columns: auto auto;
-    grid-gap: 10px;
+    grid-gap: 50px;
     align-items: start;
 }
 

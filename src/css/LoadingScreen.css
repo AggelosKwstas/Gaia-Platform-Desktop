@@ -146,3 +146,9 @@
         clip-path: inset(0 -1ch 0 0)
     }
 }
+
+
+.leaflet-popup{
+    width: 275px !important;
+}
+
