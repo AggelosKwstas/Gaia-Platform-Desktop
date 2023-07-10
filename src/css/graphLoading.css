@@ -279,7 +279,7 @@ body {
     }
 }
 .value-class {
-  font-family: "Newsreader", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'roboto'; 
   margin-left: 0.5em;
   font-size: 25px;
   color: rgb(48, 115, 14);
@@ -287,14 +287,14 @@ body {
 }
 
 .val-class{
-  font-family: "Newsreader", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-family: 'sans-serif';
   margin-left: 0.5em;
   font-size: 25px;
 }
 
 .val{
-  font-family: "Newsreader", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";  margin-left: 0.5em;
-  font-size: 20px;
+  font-family: 'roboto'; 
+  font-size: 17px;
   margin-top: 0.5em;
  
 }
