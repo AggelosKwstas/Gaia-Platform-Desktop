@@ -412,255 +412,265 @@ export default function Map() {
             {checkNullStation(found, index) && (
               <Popup>
                 <div>
-                <h6 style={{ textAlign: "center" }}>
-                  <FontAwesomeIcon
-                    icon={faLocationDot}
-                    className="bounce-animation"
-                  />
-                  &nbsp;&nbsp;
-                  <b>
-                    {stations["tbl_sensor_node"][index]["description"].replace(
-                      "Air Monitor",
-                      ""
-                    )}
-                  </b>
-                </h6>
-                <div style={{ textAlign: "center" }}>
-                  <img
-                    style={{
-                      display: "block",
-                      margin:'auto'
-                    }}
-                    src={uoiPng}
-                    alt="UOI"
-                  />
-                  Status: <b style={{ color: "#bb2124" }}>Inactive</b>
-                </div>
-                <div style={{ textAlign: "center", fontSize: "15px" }}>
-                  <div>
-                    <b>Station is under</b>
+                  <h6 style={{ textAlign: "center" }}>
+                    <FontAwesomeIcon
+                      icon={faLocationDot}
+                      className="bounce-animation"
+                    />
+                    &nbsp;&nbsp;
+                    <b>
+                      {stations["tbl_sensor_node"][index][
+                        "description"
+                      ].replace("Air Monitor", "")}
+                    </b>
+                  </h6>
+                  <div style={{ textAlign: "center" }}>
+                    <img
+                      style={{
+                        display: "block",
+                        margin: "auto",
+                      }}
+                      src={uoiPng}
+                      alt="UOI"
+                    />
+                    Status: <b style={{ color: "#bb2124" }}>Inactive</b>
                   </div>
-                  <div>
-                    <b>maintenance</b>
+                  <div style={{ textAlign: "center", fontSize: "15px" }}>
+                    <div>
+                      <b>Station is under</b>
+                    </div>
+                    <div>
+                      <b>maintenance</b>
+                    </div>
                   </div>
-                </div>
                 </div>
               </Popup>
             )}
 
             {!checkNullStation(found, index) && (
               <Popup>
-                <div style={{fontSize:'15px'}}>
-                <h6 style={{ textAlign: "center" }}>
-                  <FontAwesomeIcon
-                    icon={faLocationDot}
-                    className="bounce-animation"
-                    style={{fontSize:'20px'}}
-                  />
-                  &nbsp;&nbsp;
-                  <b style={{fontSize:'20px'}}>
-                    {stations["tbl_sensor_node"][index]["description"].replace(
-                      "Air Monitor",
-                      ""
+                <div style={{ fontSize: "15px" }}>
+                  <h6 style={{ textAlign: "center" }}>
+                    <FontAwesomeIcon
+                      icon={faLocationDot}
+                      className="bounce-animation"
+                      style={{ fontSize: "20px" }}
+                    />
+                    &nbsp;&nbsp;
+                    <b style={{ fontSize: "20px" }}>
+                      {stations["tbl_sensor_node"][index][
+                        "description"
+                      ].replace("Air Monitor", "")}
+                    </b>
+                  </h6>
+                  <div style={{ textAlign: "center" }}>
+                    {index === 1 && (
+                      <img
+                        style={{
+                          display: "block",
+                          margin: "0 auto 10px auto",
+                          width: "170px",
+                        }}
+                        src={gardikiPng}
+                        alt="Gardiki"
+                      />
                     )}
-                  </b>
-                </h6>
-                <div style={{ textAlign: "center" }}>
-                  {index === 1 && (
+                    {index === 2 && (
+                      <img
+                        style={{
+                          display: "block",
+                          margin: "0 auto 10px auto",
+                          width: "170px",
+                        }}
+                        src={ioannisPng}
+                        alt="Gardiki"
+                      />
+                    )}
+                    {index === 3 && (
+                      <img
+                        style={{
+                          display: "block",
+                          margin: "0 auto 10px auto",
+                          width: "170px",
+                        }}
+                        src={eleousaPng}
+                        alt="Gardiki"
+                      />
+                    )}
+                    <b>Status: </b>
+                    <b style={{ color: "#22bb33" }}>Active</b>
+                  </div>
+                  {apiIcon && (
                     <img
                       style={{
                         display: "block",
-                        margin: "0 auto 10px auto",
-                        width: "170px",
+                        margin: "0 auto",
+                        width: "85px",
                       }}
-                      src={gardikiPng}
-                      alt="Gardiki"
+                      src={`http://openweathermap.org/img/w/${apiIcon}.png`}
+                      alt="Weather"
                     />
                   )}
-                  {index === 2 && (
-                    <img
-                      style={{
-                        display: "block",
-                        margin: "0 auto 10px auto",
-                        width: "170px",
-                      }}
-                      src={ioannisPng}
-                      alt="Gardiki"
-                    />
-                  )}
-                  {index === 3 && (
-                    <img
-                      style={{
-                        display: "block",
-                        margin: "0 auto 10px auto",
-                        width: "170px",
-                      }}
-                      src={eleousaPng}
-                      alt="Gardiki"
-                    />
-                  )}
-                  <b>Status: </b>
-                  <b style={{ color: "#22bb33" }}>Active</b>
-                </div>
-                {apiIcon && (
-                  <img
-                    style={{
-                      display: "block",
-                      margin: "0 auto",
-                      width: "85px",
-                    }}
-                    src={`http://openweathermap.org/img/w/${apiIcon}.png`}
-                    alt="Weather"
-                  />
-                )}
-                {types["tbl_sensor_type"].map((type, ind) =>
-                  ind === 0 ? (
-                    <>
-                      <div style={{ marginBottom: "5px", textAlign: "center" }}>
-                        <b>Sensor readings for:</b>
-                        <div>
-                          Today at{" "}
-                          {new Date(
-                            sensorData[index][ind][
-                              coordinate["sensor_node_id"] + "_measurements"
-                            ][
+                  {types["tbl_sensor_type"].map((type, ind) =>
+                    ind === 0 ? (
+                      <>
+                        <div
+                          style={{ marginBottom: "5px", textAlign: "center" }}
+                        >
+                          <b>Sensor readings for:</b>
+                          <div>
+                            Today at{" "}
+                            {new Date(
                               sensorData[index][ind][
                                 coordinate["sensor_node_id"] + "_measurements"
-                              ].length - 1
-                            ]["timestamp"]
-                          )
-                            .toLocaleTimeString([], {
-                              hour: "2-digit",
-                              minute: "2-digit",
-                              second: "2-digit",
-                            })
-                            .replace("μ.μ.", "PM")
-                            .replace("π.μ.", "ΑΜ")}
-                        </div>
-                      </div>
-                      {checkQuality(found, coordinate, index, sensorData)
-                        .condition !== null &&
-                      checkQuality(found, coordinate, index, sensorData)
-                        .flag === "bad" ? (
-                        <div style={{ textAlign: "center" }}>
-                          <div>
-                            <b>Bad due to:</b>
-                          </div>
-                          <ul>
-                            {checkQuality(
-                              found,
-                              coordinate,
-                              index,
-                              sensorData
-                            ).condition.map((item) => (
-                              <li style={{ color: "red" }}>
-                                <b>{convertSubscriptTagsToCharacters(item)}</b>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ) : checkQuality(found, coordinate, index, sensorData)
-                          .flag === "fair" ? (
-                        <div style={{ textAlign: "center" }}>
-                          <div>
-                            <b>Fair due to:</b>
-                          </div>
-                          <ul>
-                            {checkQuality(
-                              found,
-                              coordinate,
-                              index,
-                              sensorData
-                            ).condition.map((item) => (
-                              <li style={{ color: "orange" }}>
-                                <b>{convertSubscriptTagsToCharacters(item)}</b>
-                              </li>
-                            ))}
-                          </ul>
-                        </div>
-                      ) : null}
-                      <div className="row">
-                        <div className="column">
-                          <b>
-                            {convertSubscriptTagsToCharacters(type.description)
-                              .replace("Environment", "")
-                              .replace("Sensor Node", "")}
-                            :
-                          </b>
-                        </div>
-                        <div className="column">
-                          <div className="value-container">
-                            <div>
-                              {
+                              ][
                                 sensorData[index][ind][
                                   coordinate["sensor_node_id"] + "_measurements"
-                                ][
+                                ].length - 1
+                              ]["timestamp"]
+                            )
+                              .toLocaleTimeString([], {
+                                hour: "2-digit",
+                                minute: "2-digit",
+                                second: "2-digit",
+                              })
+                              .replace("μ.μ.", "PM")
+                              .replace("π.μ.", "ΑΜ")}
+                          </div>
+                        </div>
+                        {checkQuality(found, coordinate, index, sensorData)
+                          .condition !== null &&
+                        checkQuality(found, coordinate, index, sensorData)
+                          .flag === "bad" ? (
+                          <div style={{ textAlign: "center" }}>
+                            <div>
+                              <b>Bad due to:</b>
+                            </div>
+                            <ul>
+                              {checkQuality(
+                                found,
+                                coordinate,
+                                index,
+                                sensorData
+                              ).condition.map((item) => (
+                                <li style={{ color: "red" }}>
+                                  <b>
+                                    {convertSubscriptTagsToCharacters(item)}
+                                  </b>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ) : checkQuality(found, coordinate, index, sensorData)
+                            .flag === "fair" ? (
+                          <div style={{ textAlign: "center" }}>
+                            <div>
+                              <b>Fair due to:</b>
+                            </div>
+                            <ul>
+                              {checkQuality(
+                                found,
+                                coordinate,
+                                index,
+                                sensorData
+                              ).condition.map((item) => (
+                                <li style={{ color: "orange" }}>
+                                  <b>
+                                    {convertSubscriptTagsToCharacters(item)}
+                                  </b>
+                                </li>
+                              ))}
+                            </ul>
+                          </div>
+                        ) : null}
+                        <div className="row">
+                          <div className="column">
+                            <b>
+                              {convertSubscriptTagsToCharacters(
+                                type.description
+                              )
+                                .replace("Environment", "")
+                                .replace("Sensor Node", "")}
+                              :
+                            </b>
+                          </div>
+                          <div className="column">
+                            <div className="value-container">
+                              <div>
+                                {
                                   sensorData[index][ind][
                                     coordinate["sensor_node_id"] +
                                       "_measurements"
-                                  ].length - 1
-                                ]["value"]
-                              }
-                            </div>
-                            <div>
-                              &nbsp;{convertDegreesCToSymbol(type.unit)}
+                                  ][
+                                    sensorData[index][ind][
+                                      coordinate["sensor_node_id"] +
+                                        "_measurements"
+                                    ].length - 1
+                                  ]["value"]
+                                }
+                              </div>
+                              <div>
+                                &nbsp;{convertDegreesCToSymbol(type.unit)}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
-                    </>
-                  ) : (
-                    sensorData[index] &&
-                    sensorData[index][ind] && (
-                      <div className="row">
-                        <div className="column">
-                          <b>
-                            {convertSubscriptTagsToCharacters(type.description)
-                              .replace("Environment", "")
-                              .replace("Sensor Node", "")}
-                            :
-                          </b>
-                        </div>
-                        <div className="column">
-                          <div className="value-container">
-                            <div>
-                              {
-                                sensorData[index][ind][
-                                  coordinate["sensor_node_id"] + "_measurements"
-                                ][
+                      </>
+                    ) : (
+                      sensorData[index] &&
+                      sensorData[index][ind] && (
+                        <div className="row">
+                          <div className="column">
+                            <b>
+                              {convertSubscriptTagsToCharacters(
+                                type.description
+                              )
+                                .replace("Environment", "")
+                                .replace("Sensor Node", "")}
+                              :
+                            </b>
+                          </div>
+                          <div className="column">
+                            <div className="value-container">
+                              <div>
+                                {
                                   sensorData[index][ind][
                                     coordinate["sensor_node_id"] +
                                       "_measurements"
-                                  ].length - 1
-                                ]["value"]
-                              }
-                            </div>
-                            <div>
-                              &nbsp;{convertDegreesCToSymbol(type.unit)}
+                                  ][
+                                    sensorData[index][ind][
+                                      coordinate["sensor_node_id"] +
+                                        "_measurements"
+                                    ].length - 1
+                                  ]["value"]
+                                }
+                              </div>
+                              <div>
+                                &nbsp;{convertDegreesCToSymbol(type.unit)}
+                              </div>
                             </div>
                           </div>
                         </div>
-                      </div>
+                      )
                     )
-                  )
-                )}
-                <div style={{ textAlign: "center", marginTop: "5px" }}>
-                  <button
-                    style={{ fontWeight: 300 }}
-                    className="button"
-                    onClick={() => {
-                      handleRedirect(
-                        coordinate["sensor_node_id"],
-                        sensorTypes,
-                        stations["tbl_sensor_node"][index][
-                          "description"
-                        ].replace("Air Monitor", "")
-                      );
-                    }}
-                  >
-                    View station
-                  </button>
-                </div>
+                  )}
+                  <div style={{ textAlign: "center", marginTop: "5px" }}>
+                    <button
+                      style={{ fontWeight: 300 }}
+                      className="button"
+                      onClick={() => {
+                        handleRedirect(
+                          coordinate["sensor_node_id"],
+                          sensorTypes,
+                          stations["tbl_sensor_node"][index][
+                            "description"
+                          ].replace("Air Monitor", "")
+                        );
+                      }}
+                    >
+                      View station
+                    </button>
+                  </div>
                 </div>
               </Popup>
             )}

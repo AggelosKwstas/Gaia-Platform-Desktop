@@ -12,7 +12,10 @@ import { Tooltip } from "react-tooltip";
 import ScrollToTop from "react-scroll-to-top";
 import ChartBigger from "../components/ChartBig";
 import GaugeChart from "../components/GaugeChart";
-import { convertDegreesCToSymbol, convertSubscriptTagsToCharacters } from "./Map";
+import {
+  convertDegreesCToSymbol,
+  convertSubscriptTagsToCharacters,
+} from "./Map";
 import "@fontsource/roboto/400.css";
 import o3 from "../img/o3.png";
 import temperature from "../img/thermometer.png";
@@ -313,21 +316,27 @@ const Graphs = React.memo(() => {
                       sm="4"
                       xs="6"
                       style={{ height: "100px" }}
-                      data-aos="fade-right" data-aos-duration="1000"
+                      data-aos="fade-right"
+                      data-aos-duration="1000"
                     >
                       <Row>
-                        <Col style={{display:'block'}}>
-                            <Col><b className="val-class">{convertSubscriptTagsToCharacters('O<sub>3</sub>')}</b></Col>
+                        <Col style={{ display: "block" }}>
+                          <Col>
+                            <b className="val-class">
+                              {convertSubscriptTagsToCharacters(
+                                "O<sub>3</sub>"
+                              )}
+                            </b>
+                          </Col>
                           <img src={o3} style={{ width: "50px" }}></img>
-                          <b className="value-class">{value_3[value_3.length-1]} ppm</b>
+                          <b className="value-class">
+                            {value_3[value_3.length - 1]} ppm
+                          </b>
                         </Col>
                       </Row>
                       <Row>
                         <Col>
-                          <b
-                            className="val"
-                            style={{ marginLeft: "3em" }}
-                          >
+                          <b className="val" style={{ marginLeft: "3em" }}>
                             Range: 0 - 18(ppm)
                           </b>
                         </Col>
@@ -339,22 +348,34 @@ const Graphs = React.memo(() => {
                       sm="4"
                       xs="6"
                       style={{ height: "100px" }}
-                      data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200"
+                      data-aos="fade-right"
+                      data-aos-duration="1000"
+                      data-aos-delay="200"
                     >
                       <Row>
-                        <Col style={{display:'block'}}>
-                            <Col><b className="val-class" style={{marginLeft:'2.8em'}}>{convertSubscriptTagsToCharacters('Temperature')}</b></Col>
-                          <img src={temperature} style={{ width: "50px" }}></img>
-                          <b className="value-class">{value_4[value_4.length-1]} {convertDegreesCToSymbol('&deg;C')}</b>
+                        <Col style={{ display: "block" }}>
+                          <Col>
+                            <b
+                              className="val-class"
+                              style={{ marginLeft: "2.8em" }}
+                            >
+                              {convertSubscriptTagsToCharacters("Temperature")}
+                            </b>
+                          </Col>
+                          <img
+                            src={temperature}
+                            style={{ width: "50px" }}
+                          ></img>
+                          <b className="value-class">
+                            {value_4[value_4.length - 1]}{" "}
+                            {convertDegreesCToSymbol("&deg;C")}
+                          </b>
                         </Col>
                       </Row>
                       <Row>
                         <Col>
-                          <b
-                            className="val"
-                            style={{ marginLeft: "3em" }}
-                          >
-                            Range: -40 - 85({convertDegreesCToSymbol('&deg;C')})
+                          <b className="val" style={{ marginLeft: "3em" }}>
+                            Range: -40 - 85({convertDegreesCToSymbol("&deg;C")})
                           </b>
                         </Col>
                       </Row>
@@ -365,21 +386,29 @@ const Graphs = React.memo(() => {
                       sm="4"
                       xs="6"
                       style={{ height: "100px" }}
-                      data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400"
+                      data-aos="fade-right"
+                      data-aos-duration="1000"
+                      data-aos-delay="400"
                     >
                       <Row>
-                        <Col style={{display:'block'}}>
-                            <Col><b className="val-class" style={{marginLeft:'1.7em'}}>{convertSubscriptTagsToCharacters('Humidity')}</b></Col>
+                        <Col style={{ display: "block" }}>
+                          <Col>
+                            <b
+                              className="val-class"
+                              style={{ marginLeft: "1.7em" }}
+                            >
+                              {convertSubscriptTagsToCharacters("Humidity")}
+                            </b>
+                          </Col>
                           <img src={humidity} style={{ width: "50px" }}></img>
-                          <b className="value-class">{value_5[value_5.length-1]} %</b>
+                          <b className="value-class">
+                            {value_5[value_5.length - 1]} %
+                          </b>
                         </Col>
                       </Row>
                       <Row>
                         <Col>
-                          <b
-                            className="val"
-                            style={{ marginLeft: "3em" }}
-                          >
+                          <b className="val" style={{ marginLeft: "3em" }}>
                             Range: 0 - 100(%)
                           </b>
                         </Col>
@@ -391,47 +420,63 @@ const Graphs = React.memo(() => {
                       sm="4"
                       xs="6"
                       style={{ height: "100px" }}
-                      data-aos="fade-right" data-aos-duration="1000" data-aos-delay="600"
+                      data-aos="fade-right"
+                      data-aos-duration="1000"
+                      data-aos-delay="600"
                     >
                       <Row>
-                        <Col style={{display:'block'}}>
-                            <Col><b className="val-class" style={{marginLeft:'1.5em'}}>{convertSubscriptTagsToCharacters('PM 1.0')}</b></Col>
+                        <Col style={{ display: "block" }}>
+                          <Col>
+                            <b
+                              className="val-class"
+                              style={{ marginLeft: "1.5em" }}
+                            >
+                              {convertSubscriptTagsToCharacters("PM 1.0")}
+                            </b>
+                          </Col>
                           <img src={pm1} style={{ width: "50px" }}></img>
-                          <b className="value-class">{value_8[value_8.length-1]} μg/m3</b>
+                          <b className="value-class">
+                            {value_8[value_8.length - 1]} μg/m3
+                          </b>
                         </Col>
                       </Row>
                       <Row>
                         <Col>
-                          <b
-                            className="val"
-                            style={{ marginLeft: "3em" }}
-                          >
+                          <b className="val" style={{ marginLeft: "3em" }}>
                             Range: 0 - 300(μg/m3)
                           </b>
                         </Col>
                       </Row>
                     </Col>
-                 <Col
+                    <Col
                       lg="2"
                       md="3"
                       sm="4"
                       xs="6"
                       style={{ height: "100px" }}
-                      data-aos="fade-right" data-aos-duration="1000" data-aos-delay="800"
+                      data-aos="fade-right"
+                      data-aos-duration="1000"
+                      data-aos-delay="800"
                     >
                       <Row>
-                        <Col style={{display:'block'}}>
-                            <Col><b className="val-class" style={{marginLeft:'1.5em'}}>{convertSubscriptTagsToCharacters('PM 1.0')}</b></Col>
+                        <Col style={{ display: "block" }}>
+                          <Col>
+                            <b
+                              className="val-class"
+                              style={{ marginLeft: "1.5em" }}
+                            >
+                              {convertSubscriptTagsToCharacters("PM 1.0")}
+                            </b>
+                          </Col>
                           <img src={pm1} style={{ width: "50px" }}></img>
-                          <b className="value-class">{value_10[value_10.length-1]} μg/m3</b>
+                          <b className="value-class">
+                            {value_10[value_10.length - 1]} μg/m3
+                          </b>
                         </Col>
                       </Row>
                       <Row>
                         <Col>
-                          <b
-                            className="val"
-                            style={{ marginLeft: "3em" }}
-                          >
+                          <b className="val" style={{ marginLeft: "3em" }}>
                             Range: 0 - 300(μg/m3)
                           </b>
                         </Col>
@@ -445,27 +490,34 @@ const Graphs = React.memo(() => {
                       paddingTop: "100px",
                     }}
                   >
-                <Col
+                    <Col
                       lg="2"
                       md="3"
                       sm="4"
                       xs="6"
                       style={{ height: "100px" }}
-                      data-aos="fade-right" data-aos-duration="1000"
+                      data-aos="fade-right"
+                      data-aos-duration="1000"
                     >
                       <Row>
-                        <Col style={{display:'block'}}>
-                            <Col><b className="val-class" style={{marginLeft:'1.5em'}}>{convertSubscriptTagsToCharacters('PM 2.5')}</b></Col>
+                        <Col style={{ display: "block" }}>
+                          <Col>
+                            <b
+                              className="val-class"
+                              style={{ marginLeft: "1.5em" }}
+                            >
+                              {convertSubscriptTagsToCharacters("PM 2.5")}
+                            </b>
+                          </Col>
                           <img src={pm25} style={{ width: "70px" }}></img>
-                          <b className="value-class">{value_9[value_9.length-1]} μg/m3</b>
+                          <b className="value-class">
+                            {value_9[value_9.length - 1]} μg/m3
+                          </b>
                         </Col>
                       </Row>
                       <Row>
                         <Col>
-                          <b
-                            className="val"
-                            style={{ marginLeft: "3em" }}
-                          >
+                          <b className="val" style={{ marginLeft: "3em" }}>
                             Range: 0 - 300(μg/m3)
                           </b>
                         </Col>
@@ -477,21 +529,32 @@ const Graphs = React.memo(() => {
                       sm="4"
                       xs="6"
                       style={{ height: "100px" }}
-                      data-aos="fade-right" data-aos-duration="1000" data-aos-delay="200"
+                      data-aos="fade-right"
+                      data-aos-duration="1000"
+                      data-aos-delay="200"
                     >
                       <Row>
-                        <Col style={{display:'block'}}>
-                            <Col><b className="val-class" style={{marginLeft:'2.8em'}}>{convertSubscriptTagsToCharacters('SO<sub>2</sub>')}</b></Col>
+                        <Col style={{ display: "block" }}>
+                          <Col>
+                            <b
+                              className="val-class"
+                              style={{ marginLeft: "2.8em" }}
+                            >
+                              {convertSubscriptTagsToCharacters(
+                                "SO<sub>2</sub>"
+                              )}
+                            </b>
+                          </Col>
                           <img src={so2} style={{ width: "80px" }}></img>
-                          <b className="value-class">{value_11[value_11.length-1]} {convertSubscriptTagsToCharacters('SO<sub>2</sub>')}</b>
+                          <b className="value-class">
+                            {value_11[value_11.length - 1]}{" "}
+                            {convertSubscriptTagsToCharacters("SO<sub>2</sub>")}
+                          </b>
                         </Col>
                       </Row>
                       <Row>
                         <Col>
-                          <b
-                            className="val"
-                            style={{ marginLeft: "3em" }}
-                          >
+                          <b className="val" style={{ marginLeft: "3em" }}>
                             Range: 0 - 20(ppm)
                           </b>
                         </Col>
@@ -503,21 +566,29 @@ const Graphs = React.memo(() => {
                       sm="4"
                       xs="6"
                       style={{ height: "100px" }}
-                      data-aos="fade-right" data-aos-duration="1000" data-aos-delay="400"
+                      data-aos="fade-right"
+                      data-aos-duration="1000"
+                      data-aos-delay="400"
                     >
                       <Row>
-                        <Col style={{display:'block'}}>
-                            <Col><b className="val-class" style={{marginLeft:'2.8em'}}>{convertSubscriptTagsToCharacters('NO')}</b></Col>
+                        <Col style={{ display: "block" }}>
+                          <Col>
+                            <b
+                              className="val-class"
+                              style={{ marginLeft: "2.8em" }}
+                            >
+                              {convertSubscriptTagsToCharacters("NO")}
+                            </b>
+                          </Col>
                           <img src={no} style={{ width: "65px" }}></img>
-                          <b className="value-class">{value_12[value_12.length-1]} ppm</b>
+                          <b className="value-class">
+                            {value_12[value_12.length - 1]} ppm
+                          </b>
                         </Col>
                       </Row>
                       <Row>
                         <Col>
-                          <b
-                            className="val"
-                            style={{ marginLeft: "3em" }}
-                          >
+                          <b className="val" style={{ marginLeft: "3em" }}>
                             Range: 0 - 20(ppm)
                           </b>
                         </Col>
@@ -529,21 +600,32 @@ const Graphs = React.memo(() => {
                       sm="4"
                       xs="6"
                       style={{ height: "100px" }}
-                      data-aos="fade-right" data-aos-duration="1000" data-aos-delay="600"
+                      data-aos="fade-right"
+                      data-aos-duration="1000"
+                      data-aos-delay="600"
                     >
                       <Row>
-                        <Col style={{display:'block'}}>
-                            <Col><b className="val-class" style={{marginLeft:'2.8em'}}>{convertSubscriptTagsToCharacters('NO<sub>2</sub>')}</b></Col>
+                        <Col style={{ display: "block" }}>
+                          <Col>
+                            <b
+                              className="val-class"
+                              style={{ marginLeft: "2.8em" }}
+                            >
+                              {convertSubscriptTagsToCharacters(
+                                "NO<sub>2</sub>"
+                              )}
+                            </b>
+                          </Col>
                           <img src={no2} style={{ width: "65px" }}></img>
-                          <b className="value-class">{value_12[value_12.length-1]} {convertSubscriptTagsToCharacters('NO<sub>2</sub>')}</b>
+                          <b className="value-class">
+                            {value_12[value_12.length - 1]}{" "}
+                            {convertSubscriptTagsToCharacters("NO<sub>2</sub>")}
+                          </b>
                         </Col>
                       </Row>
                       <Row>
                         <Col>
-                          <b
-                            className="val"
-                            style={{ marginLeft: "3em" }}
-                          >
+                          <b className="val" style={{ marginLeft: "3em" }}>
                             Range: 0 - 20(ppm)
                           </b>
                         </Col>
@@ -555,21 +637,29 @@ const Graphs = React.memo(() => {
                       sm="4"
                       xs="6"
                       style={{ height: "170px" }}
-                      data-aos="fade-right" data-aos-duration="1000" data-aos-delay="800"
+                      data-aos="fade-right"
+                      data-aos-duration="1000"
+                      data-aos-delay="800"
                     >
                       <Row>
-                        <Col style={{display:'block'}}>
-                            <Col><b className="val-class" style={{marginLeft:'2.8em'}}>{convertSubscriptTagsToCharacters('Pressure')}</b></Col>
+                        <Col style={{ display: "block" }}>
+                          <Col>
+                            <b
+                              className="val-class"
+                              style={{ marginLeft: "2.8em" }}
+                            >
+                              {convertSubscriptTagsToCharacters("Pressure")}
+                            </b>
+                          </Col>
                           <img src={pressure} style={{ width: "65px" }}></img>
-                          <b className="value-class">{value_14[value_14.length-1]} Pa</b>
+                          <b className="value-class">
+                            {value_14[value_14.length - 1]} Pa
+                          </b>
                         </Col>
                       </Row>
                       <Row>
                         <Col>
-                          <b
-                            className="val"
-                            style={{ marginLeft: "3em" }}
-                          >
+                          <b className="val" style={{ marginLeft: "3em" }}>
                             Range: 30000 - 110000(Pa)
                           </b>
                         </Col>
