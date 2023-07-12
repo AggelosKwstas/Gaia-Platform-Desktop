@@ -542,7 +542,7 @@ const Legend = ({ mapRef, locations }) => {
             <h6 style={{ marginLeft: "7px" }}>
               {" "}
               © 2022 |{" "}
-              <a
+              {/* <a
                 href="https://www.neuronenergy.com/"
                 onClick={(e) => {
                   e.preventDefault();
@@ -551,7 +551,8 @@ const Legend = ({ mapRef, locations }) => {
               >
                 Neuron Energy Solutions
               </a>
-              . All rights reserved.
+              . */}
+               All rights reserved.
             </h6>
           </div>
           <div style={{ float: "right" }}>
