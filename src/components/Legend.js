@@ -559,44 +559,44 @@ const Legend = ({ mapRef, locations }) => {
             <a
               href="https://www.linkedin.com/company/neuron-energy-solutions/about/"
               target="_blank"
-              onClick={(e) => {
-                e.preventDefault();
-                openLinkInNewWindow(
-                  "https://www.linkedin.com/company/neuron-energy-solutions/about/"
-                );
-              }}
+              // onClick={(e) => {
+              //   e.preventDefault();
+              //   openLinkInNewWindow(
+              //     "https://www.linkedin.com/company/neuron-energy-solutions/about/"
+              //   );
+              // }}
             >
               <img className="footer-icons" src={linkedin} alt="Logo" />
             </a>
             <a
               href="https://www.facebook.com/profile.php?id=100051469122856"
               target="_blank"
-              onClick={(e) => {
-                e.preventDefault();
-                openLinkInNewWindow(
-                  "https://www.facebook.com/profile.php?id=100051469122856"
-                );
-              }}
+              // onClick={(e) => {
+              //   e.preventDefault();
+              //   openLinkInNewWindow(
+              //     "https://www.facebook.com/profile.php?id=100051469122856"
+              //   );
+              // }}
             >
               <img className="footer-icons" src={facebook} alt="Facebook" />
             </a>
             <a
               href="https://twitter.com/SolarEye_PV"
               target="_blank"
-              onClick={(e) => {
-                e.preventDefault();
-                openLinkInNewWindow("https://twitter.com/SolarEye_PV");
-              }}
+              // onClick={(e) => {
+              //   e.preventDefault();
+              //   openLinkInNewWindow("https://twitter.com/SolarEye_PV");
+              // }}
             >
               <img className="footer-icons" src={twitter} alt="Twitter" />
             </a>
             <a
               href="https://gr.pinterest.com/solareye/"
               target="_blank"
-              onClick={(e) => {
-                e.preventDefault();
-                openLinkInNewWindow("https://gr.pinterest.com/solareye/");
-              }}
+              // onClick={(e) => {
+              //   e.preventDefault();
+              //   openLinkInNewWindow("https://gr.pinterest.com/solareye/");
+              // }}
             >
               <img className="footer-icons" src={pinterest} alt="Pinterest" />
             </a>
